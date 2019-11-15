@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/UserLayout}">
+<head>
+
+<title>Dashboard</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/vendors/vendors.min.css"
+	th:href="@{/app-assets/vendors/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/vendors/animate-css/animate.css"
+	th:href="@{/app-assets/vendors/animate-css/animate.css}" />
+
+<!-- END: VENDOR CSS->
+    <!-- BEGIN: Page Level CSS-->
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/themes/vertical-modern-menu-template/materialize.css"
+	th:href="@{/app-assets/css/themes/vertical-modern-menu-template/materialize.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/themes/vertical-modern-menu-template/style.css"
+	th:href="@{/app-assets/css/themes/vertical-modern-menu-template/style.css}" />
+<!-- Dashboard CSS -->
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/pages/dashboard-modern.css"
+	th:href="@{/app-assets/css/pages/dashboard-modern.css}" />
+<!-- INTRO CSS -->
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/pages/intro.css"
+	th:href="@{/app-assets/css/pages/intro.css}" />
+<!-- Login,Register ,forgot password,reset password css -->
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/custom/custom.css"
+	th:href="@{/app-assets/css/custom/custom.css}" />
+</head>
+<body>
+
+	<th:block layout:fragment="content">
+
+		<div id="main">
+			<div class="row">
+
+
+
+				<div class="col s12">
+					<div class="container"></div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+	<!-- / Intro -->
+	<th:block layout:fragment="script">
+		<!-- JS FILES -->
+		<script src="../static/app-assets/js/vendors.min.js"
+			th:src="@{/app-assets/js/vendors.min.js}" type="text/javascript"></script>
+
+		<script src="../static/app-assets/js/plugins.js"
+			th:src="@{/app-assets/js/plugins.js}" type="text/javascript"></script>
+		<script src="../static/app-assets/js/custom/custom-script.js"
+			th:src="@{/app-assets/js/custom/custom-script.js}"
+			type="text/javascript"></script>
+		<script src="../static/app-assets/js/scripts/dashboard-modern.js"
+			th:src="@{/app-assets/js/scripts/dashboard-modern.js}"
+			type="text/javascript"></script>
+		<script src="../static/app-assets/js/scripts/intro.js"
+			th:src="@{/app-assets/js/scripts/intro.js}" type="text/javascript"></script>
+		<!-- /JS FILES -->
+
+	</th:block>
+
+</body>
+</html>

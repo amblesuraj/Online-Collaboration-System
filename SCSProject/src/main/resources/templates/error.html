@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+
+<html class="loading" lang="en" data-textdirection="ltr"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/errorLayout}">
+<head>
+
+<title>Access Denied</title>
+
+</head>
+<!-- END: Head-->
+<body>
+	<th:block layout:fragment="content">
+		<div class="row">
+			<div class="col s12">
+				<div class="container">
+					<div class="section section-404 p-0 m-0 height-100vh">
+						<div class="row">
+							<!-- 404 -->
+							
+							<div class="col s12 center-align white">
+							<th:block sec:authorize="isAuthenticated()">
+								<h5 class="red-text">Hello, Mr/Mrs <span th:text="${session.userModel.fullName}"></span> </h5>
+							</th:block>
+								<img src="../static/app-assets/images/gallery/error-2.png"
+									th:src="@{/app-assets/images/gallery/error-2.png} "
+									class=" bg-image-404" alt="">
+								<h1 class="error-code m-0 purple-text">Error</h1>
+								<h6 class="mb-2 red-text">The Page you are looking for is not exists.</h6>
+								<a
+									class="btn waves-effect waves-light gradient-45deg-deep-purple-blue gradient-shadow mb-4"
+									th:onclick="history.back()">Back To Home</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+</body>
+
+<!-- Mirrored from pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-modern-menu-template/page-404.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2019 05:39:25 GMT -->
+</html>

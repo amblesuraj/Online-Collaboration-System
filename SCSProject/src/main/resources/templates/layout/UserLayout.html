@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- BEGIN: Head-->
+<head>
+<title data-layout-title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Student
+	Collaboration System</title>
+<th:block th:replace="fragments/style"></th:block>
+
+</head>
+<!-- END: Head-->
+<body
+	class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  "
+	data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+
+	<!-- BEGIN: Header-->
+	<th:block th:replace="fragments/header :: header"></th:block>
+	<!-- END: Header-->
+
+
+
+	<!-- BEGIN: SideNav-->
+	<th:block th:insert="fragments/sidebar :: sidebar"></th:block>
+	<!-- END: SideNav-->
+
+	<!-- BEGIN: Page Main ALL ADMIN CONTENT-->
+	<th:block th:if="${param.logout != null }">
+						<div class="row valign-wrapper">
+							<div class="col s12 m8 offset-m4 offset-l3 l6 offset-l3">
+								<div class="card-alert card gradient-45deg-light-blue-cyan">
+									<div class="card-content white-text">
+										<p>
+											<i class="material-icons">info_outline</i> &nbsp;INFO : <span
+												th:text="${logout}"></span>
+										</p>
+									</div>
+									<button type="button" class="close white-text"
+										data-dismiss="alert" aria-label="Close">
+										<i
+									class="material-icons large">close</i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</th:block>
+	
+<th:block layout:fragment="content"></th:block>
+						
+					
+
+					<th:block th:replace="fragments/rightSidebar:: rightSidebar"></th:block>
+					<th:block th:replace="fragments/intro:: intro"></th:block>
+
+	
+	<!-- END: Page Main-->
+
+
+	<!-- BEGIN: Footer-->
+	<th:block th:replace="fragments/userFooter :: userFooter"></th:block>
+
+
+
+	<!-- END: Footer-->
+	<!-- BEGIN JS FILES-->
+
+
+	<!-- END JS FILES-->
+
+	<th:block layout:fragment="script"></th:block>
+	 <script src="../static/app-assets/js/scripts/ui-alerts.js" th:src="@{/app-assets/js/scripts/ui-alerts.js}" type="text/javascript"></script>
+	 
+
+</body>
+
+<!-- Mirrored from pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-modern-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2019 05:36:36 GMT -->
+</html>
