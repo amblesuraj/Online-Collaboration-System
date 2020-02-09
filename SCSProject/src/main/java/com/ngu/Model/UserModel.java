@@ -23,6 +23,8 @@ public class UserModel implements Serializable {
     private String username;
 
     private User user;
+    
+    private Profile profile;
 
     private Role role;
     private long phone;

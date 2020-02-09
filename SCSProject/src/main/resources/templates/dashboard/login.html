@@ -11,7 +11,9 @@
 <title>User Login</title>
 
 
-<link rel="stylesheet" type="text/css" href="../static/app-assets/css/pages/login.css" th:href="@{/app-assets/css/pages/login.css}"/>
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/pages/login.css"
+	th:href="@{/app-assets/css/pages/login.css}" />
 </head>
 <!-- END: Head-->
 <body
@@ -46,6 +48,7 @@
 									</button>
 								</div>
 							</th:block>
+							
 							<th:block th:if="${msg != null}">
 								<div class="card-alert card gradient-45deg-green-teal">
 									<div class="card-content white-text">
@@ -114,7 +117,7 @@
 								</div>
 								<div class="input-field col s6 m6 l6">
 									<p class="margin right-align medium-small">
-										<a th:href="@{/user/forgot-password}">Forgot password ?</a>
+										<a th:href="@{/dashboard/forgot-password}">Forgot password ?</a>
 									</p>
 								</div>
 							</div>

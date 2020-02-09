@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -33,7 +34,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS,value = "request")
 @Table(name = "user")
-public class User implements Serializable {
+public class User implements Serializable{
 
 
     private static final long serialVersionUID = 1L;
@@ -83,5 +84,12 @@ public class User implements Serializable {
     private Date lastLogin;
 
     private String resetToken;
+    
+    
+    
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
+    private Profile profile;
+    
+    
 
 }

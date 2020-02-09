@@ -27,7 +27,7 @@ public class CustomLogoutHandler implements LogoutSuccessHandler{
 					
 			if(authentication == null)
 			{
-				response.sendRedirect("index");
+				response.sendRedirect("/dashboard/login");
 			}
 	}
 

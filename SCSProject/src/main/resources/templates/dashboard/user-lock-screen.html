@@ -19,7 +19,7 @@
 				<div id="lock-screen" class="row">
 					<div
 						class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 forgot-card bg-opacity-8">
-						<form class="login-form" th:action="@{/dashboard/login}"
+						<form class="login-form" th:action="@{/dashboard/process-lock}"
 							id="loginForm" method="post">
 							<th:block th:if="${param.error != null}">
 								<div class="card-alert card gradient-45deg-red-pink">
@@ -39,13 +39,13 @@
 								<div class="input-field col s12 center-align mt-10">
 									<img class="z-depth-4 circle responsive-img" width="100"
 										src="../../../app-assets/images/user/4.jpg" alt="">
-									<h5>John Doe</h5>
+									<h5>[[${userModel.username}]]</h5>
 								</div>
 							</div>
 							<div class="row margin">
 								<div class="input-field col s12">
 									<i class="material-icons prefix pt-2">lock_outline</i> <input
-										id="username" type="hidden" name="${userModel.username}">
+										id="username" type="hidden" name="username" value="${userModel.username}">
 									<input id="password" type="password" name="password"> <label
 										for="password">Password</label>
 								</div>

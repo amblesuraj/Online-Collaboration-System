@@ -34,11 +34,38 @@ public class Role implements Serializable{
    
     private Set<User> users=new HashSet<>();
 
-    public Long getId() {
+    /**
+	 * @param string
+	 */
+	
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    /**
+	 * 
+	 */
+	public Role()
+	{
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param id
+	 * @param name
+	 * @param users
+	 */
+	public Role(String name)
+	{
+		super();
+		
+		this.name = name;
+		
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 

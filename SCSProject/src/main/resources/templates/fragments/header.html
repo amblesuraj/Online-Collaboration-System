@@ -3,11 +3,41 @@
 	th:fragment="header">
 	<header class="page-topbar" id="header">
 		<div class="navbar navbar-fixed">
+			
 			<nav
-				class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
+				  class="navbar-main navbar-color sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
+				
+				
+				
+				
+				
 				<div class="nav-wrapper">
+				<div class="brand-sidebar">
+			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('ADMIN')">
+				<a class="brand-logo white-text lighten-1" th:href="@{/admin}"><img
+					src="../static/app-assets/images/logo/materialize-logo-color.png"
+					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
+					alt="materialize logo" /><span
+					class="logo-text hide-on-med-and-down white-text lighten-1">Admin's Club</span></a><a
+					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+			</h1>
+			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('USER','EMPLOYEE') or !isAuthenticated()">
+				<a class="brand-logo white-text lighten-1" th:href="@{/index}"><img
+					src="../static/app-assets/images/logo/materialize-logo-color.png"
+					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
+					alt="materialize logo" /><span
+					class="logo-text hide-on-med-and-down white-text lighten-1">Student's Club</span></a><a
+					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+			</h1>
+			
+		</div>
+				
 					<th:block sec:authorize="isAuthenticated()">
 						<div class="header-search-wrapper hide-on-med-and-down">
+						
+						
+							
+							
 							<i class="material-icons">search</i> <input
 								class="header-search-input z-depth-2" type="text" name="Search"
 								placeholder="Search blogs,events or forum">
@@ -130,7 +160,7 @@
 									<img src="../static/app-assets/images/avatar/avatar-7.png"
 										th:src="@{/app-assets/images/avatar/avatar-7.png}"
 										class="circle responsive-img z-depth-5" width="80px"
-										alt="user">
+										alt="user" />
 								</div>
 								<div class="col s12 m6 l8 " sec:authorize="isAuthenticated()">
 									<h4 class="red-text text-accent-5" style="font-size: 16px;">
@@ -147,7 +177,7 @@
 
 
 						<li><a class="grey-text text-darken-1"
-							th:href="@{/user/profile}"><i class="material-icons">person_outline</i>
+							th:href="@{'/user/profile/'+${userModel.id}}"><i class="material-icons">person_outline</i>
 								Profile</a></li>
 						<li><a class="grey-text text-darken-1" href="app-chat.html"><i
 								class="material-icons">chat_bubble_outline</i> Chat</a></li>

@@ -64,6 +64,7 @@ public class GlobleController {
 						userModel.setRole(role);
 					}
 					
+					userModel.setProfile(user.getProfile());
 					
 					userModel.setPhone(user.getPhone());
 					userModel.setUser(user);

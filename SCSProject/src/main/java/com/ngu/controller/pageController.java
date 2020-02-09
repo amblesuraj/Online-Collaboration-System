@@ -17,6 +17,7 @@ public class pageController {
 	
 	@RequestMapping(value = { "", "/", "index", "home" }, method = RequestMethod.GET)
 	public String index(Model model) {
+		model.addAttribute("isUserLayout", true);
 		return "index";
 	}
 

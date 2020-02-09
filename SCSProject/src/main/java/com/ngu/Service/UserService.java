@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.ngu.Model.Profile;
 import com.ngu.Model.User;
 
 public interface UserService extends UserDetailsService {
@@ -14,6 +15,8 @@ public interface UserService extends UserDetailsService {
 
 	User update(User user);
     User findByUsername(String username);
+    
+    Optional<User> findUByUsername(String username);
     
     User findByUsernameAndPassword(String username,String Password);
     
@@ -36,4 +39,13 @@ public interface UserService extends UserDetailsService {
 	public void deleteById(int id);
 	
 	public List<Map<String, Object>> userDetailsReport();
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**********************************************************************************************************/
+	
+	
+	public User getUserFromSession();
+	
+	public Profile getProfileFromSession();
+	
 }

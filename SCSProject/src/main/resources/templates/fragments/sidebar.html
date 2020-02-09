@@ -12,8 +12,8 @@
 					class="logo-text hide-on-med-and-down">Admin's Club</span></a><a
 					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
 			</h1>
-			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('USER','EMPLOYEE',isAnonymous())">
-				<a class="brand-logo darken-1" th:href="@{index}"><img
+			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('USER','EMPLOYEE') or !isAuthenticated()">
+				<a class="brand-logo darken-1" th:href="@{/index}"><img
 					src="../static/app-assets/images/logo/materialize-logo-color.png"
 					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
 					alt="materialize logo" /><span

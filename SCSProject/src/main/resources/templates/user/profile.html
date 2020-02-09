@@ -76,7 +76,7 @@
 							<div class="col s10 m6 l6">
 								<h5 class="breadcrumbs-title mt-0 mb-0">User Profile Page</h5>
 								<ol class="breadcrumbs mb-0">
-									<li class="breadcrumb-item"><a href="index-2.html">Home</a>
+									<li class="breadcrumb-item"><a href="/index">Home</a>
 									</li>
 									<li class="breadcrumb-item"><a href="#">User</a></li>
 									<li class="breadcrumb-item active">User Profile Page</li>
@@ -99,7 +99,7 @@
 										href="page-faq.html">FAQ</a></li>
 									<li class="divider" tabindex="-1"></li>
 									<li tabindex="0"><a class="grey-text text-darken-2"
-										href="user-login.html">Logout</a></li>
+										th:href="@{/logout}">Logout</a></li>
 								</ul>
 							</div>
 						</div>
@@ -127,7 +127,9 @@
 										<div class="col s12 center-align">
 											<img class="responsive-img circle z-depth-5" width="200"
 												src="../static/app-assets/images/user/12.jpg"
-												th:src="@{/app-assets/images/user/12.jpg}" alt="" /> <br>
+												th:src="${(userModel.Profile.profilePicture == null && #strings.isEmpty(userModel.Profile.profilePicture)) }  ? @{/app-assets/images/user/12.jpg} : userModel.Profile.profilePicture" alt="Profile Picture" />
+														
+											 <br>
 											<a class="waves-effect waves-light btn mt-5 border-radius-4">
 												Follow</a>
 										</div>
@@ -398,7 +400,7 @@
 											<div class="card-content card-border-gray">
 												<div class="row">
 													<div class="col s12">
-														<h5>Suzanne Martin</h5>
+														<h5>[[${userModel.fullName}]]</h5>
 														<p>
 															Senior Designer <span class="amber-text"><span
 																class="material-icons star-width vertical-align-middle">star_rate</span>

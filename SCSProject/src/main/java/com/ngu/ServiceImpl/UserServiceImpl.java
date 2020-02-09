@@ -1,6 +1,7 @@
 package com.ngu.ServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ngu.Model.CustomUserDetails;
+import com.ngu.Model.Profile;
 import com.ngu.Model.Role;
 import com.ngu.Model.User;
+import com.ngu.Model.UserModel;
 import com.ngu.Repositories.RoleRepository;
 import com.ngu.Repositories.UserRepository;
 import com.ngu.Service.UserService;
@@ -33,6 +37,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	RoleRepository roleRepository;
+	
+	@Autowired
+	HttpSession session;
+
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	User user = null;
@@ -67,12 +75,17 @@ public class UserServiceImpl implements UserService {
 	public User save(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);	
-        Role role = new Role();
-        	role.setName("USER");
-        user.getRoles().add(role);
+
         
-//        Role role = roleRepository.findByName("EMPLOYEE");
-//        user.setRoles(new HashSet<>(Arrays.asList(role)));
+        user.setRoles(new HashSet<>(Arrays.asList(new Role("USER"))));
+        
+        Profile profile = new Profile();
+        
+        profile.setUser(user);
+        
+        user.setProfile(profile);
+        
+        
     
        return   userRepository.save(user);
    	
@@ -179,29 +192,33 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 
+
+	
+
+		
+	@Override
+	public User getUserFromSession()
+	{
+		// TODO Auto-generated method stub
+		return ((UserModel)session.getAttribute("userModel")).getUser();
+	}
+
+
+	@Override
+	public Profile getProfileFromSession()
+	{
+	
+		return ((UserModel)session.getAttribute("userModel")).getProfile();
+	}
+
+
+	@Override
+	public Optional<User> findUByUsername(String username)
+	{
+		// TODO Auto-generated method stub
+		return userRepository.findUByUsername(username);
+	}
+
 	
 }
 
-
-
-
-
-
-
-
-
-
-
-
-//public  boolean findByUser(User user) {
-//	
-//	
-//	return userRepository.exists(user);
-//}
-
-
-//public boolean findByUser(User user) {
-//	
-//	return userRepository.existsByUser(user);
-//	
-//}

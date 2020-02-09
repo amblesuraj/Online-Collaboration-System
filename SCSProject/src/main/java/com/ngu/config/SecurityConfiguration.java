@@ -10,9 +10,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
@@ -37,10 +41,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.cors().and().csrf().disable();
-		
+			http.sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+				.sessionFixation()
+					.migrateSession()
+						.maximumSessions(1)
+							.sessionRegistry(sessionRegistry());
 			http.authorizeRequests()
-			
-			.antMatchers("/","/index","/","/home","/user/**").permitAll()
+			.antMatchers("/","/index","/home").authenticated()
 			.antMatchers("/dashboard/**").permitAll() 
 			.antMatchers("/resources/**","/static/**").permitAll()	
 			.antMatchers("/superadmin/**").hasAuthority("SUPERADMIN")
@@ -73,6 +81,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.exceptionHandling().accessDeniedPage("/dashboard/accessDenied");
 		}
 		
+		/**
+		 * @return
+		 */
+		@Bean
+		public SessionRegistry sessionRegistry()
+		{
+			return new SessionRegistryImpl();
+		}
+
 		@Bean
 		public PersistentTokenRepository persistentTokenRepository()
 		{
@@ -96,6 +113,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
 	    }
 
+	    @Bean
+	    public HttpSessionEventPublisher httpSessionEventPublisher() {
+	        return new HttpSessionEventPublisher();
+	    }
 
 		@Bean
 		public MultipartResolver multipartResolver()
