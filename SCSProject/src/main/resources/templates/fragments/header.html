@@ -157,14 +157,16 @@
 						<li>
 							<div class="row ">
 								<div class="col s12 m5 l4 mt-2 mb-2" style="text-align: center;">
-									<img src="../static/app-assets/images/avatar/avatar-7.png"
-										th:src="@{/app-assets/images/avatar/avatar-7.png}"
+								
+								
+									<img 
+										th:src="${(userModel.profilePicture == null && #strings.isEmpty(userModel.profilePicture)) }  ? @{/app-assets/images/avatar/avatar-7.png} : ${userModel.profilePicture}"
 										class="circle responsive-img z-depth-5" width="80px"
 										alt="user" />
 								</div>
 								<div class="col s12 m6 l8 " sec:authorize="isAuthenticated()">
 									<h4 class="red-text text-accent-5" style="font-size: 16px;">
-										<span th:text="${session.userModel.fullName}"></span>
+										<span th:text="${userModel.fullName}"></span>
 									</h4>
 									<h4 class="m-0 grey-text lighten-3 mr-1"
 										style="font-size: 14px;">

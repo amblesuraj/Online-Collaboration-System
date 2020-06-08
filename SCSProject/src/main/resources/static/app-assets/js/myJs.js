@@ -34,13 +34,7 @@ $(function () {
         
     });
 
-    $("#profileImage").click(function () {
-        $("#profileFile").click();
-    });
-
-    $("#profileFile").change(function () {
-        alert("file Uploaded");
-    });
+    
 
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
@@ -56,45 +50,48 @@ $(function () {
     });
     window.emojiPicker.discover();
     
+/*
+ * 
+ *File upload ajax
+ */
+    //profile image
+    $("#profileImage").click(function () {
+        $("#profileFile").click();
+    });
+    
+  //profile background
+    $("#profileBg").click(function () {
+        $("#profileBgFile").click();
+    });
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    $("#profileFile").on('change',uploadFile);
     
     /*
-     * Save User info in session
-     * */
-//    var formData = new FormData();
+     * End of ajax
+     */
     
-   /* $("#formValidate").submit(function(e){
-    		
-    	e.preventDefault();
-    	
-    	 $.ajax({
-    	      url: '/rest/updateUser',
-    	      type: 'POST',
-    	      data: formData,
-    	      processData: false,
-    	      contentType: false,
-    	      dataType: 'json',
-    	      success: function (response) {
-    	        if(response == "success"){
-    	          
-    	        	alert("user Updated Successfully");
-    	        	console.log(response);
-    	        }else{
-    	        	console.log("user not Updated Successfully");
-    	        } 
-    	      }
-    	   });
-    });*/
-    
-
 });
+
+
+
+function updoadFile(){
+	$.ajax({
+	      url: '/rest/user/saveProfileImage',
+	      type: 'POST',
+	      processData: false,
+	      contentType: false,
+	      data: new FormData($("#profilePictureForm")[0]),
+	    enctype: 'multipart/form-data',
+	      dataType: 'json',
+	      success: function (response) {
+	        if(response == "success"){
+	          
+	        	alert("Phofile Photo added successfully");
+	        	console.log(response);
+	        }else{
+	        	console.log("user not Updated Successfully");
+	        } 
+	      }
+	   });
+}

@@ -19,23 +19,23 @@
               <div>
                 <div class="input-field col s12 m6 l6">
                   <label for="uname">First Name*</label>
-                  <input id="fname" name="fname" th:value="${userModel.fname}" type="text" data-error=".errorTxt1">
+                  <input id="fname" name="fname" th:value="${user.fname}" type="text" data-error=".errorTxt1">
                   <div class="errorTxt1"></div>
                 </div>
                 <div class="input-field col s12 m6 l6">
                   <label for="uname">Last Name*</label>
-                  <input id="lname" name="lname" th:value="${session.userModel.lname}" type="text" data-error=".errorTxt1">
+                  <input id="lname" name="lname" th:value="${user.lname}" type="text" data-error=".errorTxt1">
                   <div class="errorTxt1"></div>
                 </div>
               </div>
                 <div class="input-field col s12">
                   <label for="uname">Username*</label>
-                  <input id="uname" name="username" th:value="${session.userModel.username}" type="text" data-error=".errorTxt1">
+                  <input id="uname" name="username" th:value="${user.username}" type="text" data-error=".errorTxt1">
                   <div class="errorTxt1"></div>
                 </div>
                 <div class="input-field col s12">
                   <label for="cemail">E-Mail *</label>
-                  <input id="cemail" type="email" th:value="${session.userModel.email}" name="email" data-error=".errorTxt2">
+                  <input id="cemail" type="email" th:value="${user.email}" name="email" data-error=".errorTxt2">
                   <div class="errorTxt2"></div>
                 </div>
         

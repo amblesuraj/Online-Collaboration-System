@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,6 +94,14 @@ public class PostController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/delete/{id}")
+	public String DeletePost(@PathVariable int id)
+	{
+		postService.deletepostById(id);
+		
+		return "redirect:/post?Deleted"+id;
 	}
 	
 }

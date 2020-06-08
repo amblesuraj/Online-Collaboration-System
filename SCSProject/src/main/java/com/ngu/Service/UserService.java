@@ -31,6 +31,8 @@ public interface UserService extends UserDetailsService {
 	public Optional<User> findById(int id);
 //	
 	public List<User> findAllUsers();
+	
+	public List<User> findTop4ByOrderByIdDesc();
 //	
 //	public void deleteAll();
 //	
@@ -46,6 +48,6 @@ public interface UserService extends UserDetailsService {
 	
 	public User getUserFromSession();
 	
-	public Profile getProfileFromSession();
+	
 	
 }

@@ -35,7 +35,6 @@ public class Profile implements Serializable
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String profilePicture;
 	
 	private String coverPhoto;
 	

@@ -69,17 +69,17 @@
 		</dependency>
 
 		<!-- Redis Session -->
-		<dependency>
+		 <dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
+		
 		<dependency>
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
 		
-		</dependency>
+		</dependency> 
 
 
 		<dependency>
@@ -97,7 +97,14 @@
 			<scope>provided</scope>
 		</dependency>
 
-
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/smtp -->
 
 		<dependency>
@@ -111,6 +118,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		
 	</dependencies>
 
 	<build>
@@ -128,6 +137,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			
+			
 		</plugins>
 	</build>
 

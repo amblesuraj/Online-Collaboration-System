@@ -9,3 +9,52 @@
 	cursor: pointer;
 	
 }
+
+.crop-text-1 {
+    -webkit-line-clamp: 1;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .crop-text-2 {
+    -webkit-line-clamp: 2;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .crop-text-3 {
+    -webkit-line-clamp: 3;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  
+  .card-scroll
+{
+	overflow: auto;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	
+}
+
+.card-scroll1
+{
+	overflow: scroll;
+	position: relative;
+	width: 100%;
+	height: 30vh;
+	
+}
+
+.card-scroll2
+{
+	overflow: scroll;
+	position: relative;
+	width: 100%;
+	height: 250px;
+	
+}

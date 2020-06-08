@@ -205,19 +205,27 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public Profile getProfileFromSession()
-	{
-	
-		return ((UserModel)session.getAttribute("userModel")).getProfile();
-	}
-
-
-	@Override
 	public Optional<User> findUByUsername(String username)
 	{
 		// TODO Auto-generated method stub
 		return userRepository.findUByUsername(username);
 	}
+
+
+	@Override
+	public List<User> findTop4ByOrderByIdDesc()
+	{
+		// TODO Auto-generated method stub
+		return userRepository.findTop10ByOrderByIdDesc();
+	}
+
+
+//	@Override
+//	public Profile getProfileFromSession()
+//	{
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html class="loading" lang="en" data-textdirection="ltr" 
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{layout/UserLayout}">
@@ -45,278 +46,281 @@
 
 	<th:block layout:fragment="content">
 
-		<div id="main">
-			<div class="row">
+	 <div id="main">
+    <div class="row ">
 
-				<div class="col s12 m8 l8">
+      <div class="col s12 m8 l8 card-scroll">
 
-
-					<!-- User Post Feed -->
-
-					<div class="card user-card-negative-margin z-depth-0" id="feed">
-						<div class="card-content card-border-gray">
-
-
-
-							<!--Test 1-->
-							<div id="test1 ">
-
-								<div class="row  ">
-									<div class="mt-5 ">
-										<div class="col s1 pr-0 circle ">
-											<a href="#"><img class="responsive-img circle"
-												th:src="@{/app-assets/images/user/12.jpg}" alt="" /></a>
-										</div>
-										<div class="col s11 mt2 ">
-											<a href="#">
-												<p class="mt-2">
-													Suzanne Martin <i
-														class="material-icons vertical-align-bottom blue-text">stars</i>
-													<span><i
-														class="material-icons vertical-align-bottom">access_time</i>
-														1 days</span>
-												</p>
-											</a>
-										</div>
-									</div>
-									<div class="row ">
-										<div class="col s12 ">
-											<div class="card card-border z-depth-2 ">
-												<div class="card-image">
-													<div class="carousel carousel-slider">
-														<a class="carousel-item" href="#one!"><img
-															th:src="@{/app-assets/images/user/20140221_174334.jpg}"
-															class="carImageSlide" alt="" /></a> <a class="carousel-item"
-															href="#one!"><img
-															th:src="@{/app-assets/images/gallery/post-1.png}"
-															class="carImageSlide" alt="" /></a> <a class="carousel-item"
-															href="#one!"><img
-															th:src="@{/app-assets/images/gallery/post-1.png}"
-															class="carImageSlide" alt="" /></a> <a class="carousel-item"
-															href="#one!"><img
-															th:src="@{/app-assets/images/gallery/post-1.png}"
-															class="carImageSlide" alt="" /></a> <a class="carousel-item"
-															href="#one!"><img
-															th:src="@{/app-assets/images/gallery/post-1.png}"
-															class="carImageSlide" alt="" /></a>
-													</div>
-												</div>
-												<div class="card-content">
-													<div class="social-icon "
-														style="padding: 15px; padding-left: 0px; padding-top: 0px; margin-top: 0px;">
-														<span id="notloveBtn"><i
-															class="material-icons vertical-align-bottom mr-1 notloveBtn pointer">favorite_border</i>90</span>
-														<span id="loveBtn"><i
-															class="material-icons red-text vertical-align-bottom mr-1 loveBtn pointer">favorite</i>90</span>
-														<i
-															class="material-icons vertical-align-bottom ml-3 mr-1 pointer"
-															id="opencomment">chat_bubble_outline</i> 15 <span><i
-															class="material-icons vertical-align-bottom ml-3 mr-1 pointer">redo</i>
-															6</span>
-													</div>
-													<h6 class="font-weight-900 text-uppercase">
-														<a href="#">Designing Services</a>
-													</h6>
-													<p>UI/UX & Graphics Design</p>
-													<p class="more">Lorem ipsum dolor sit amet consectetur,
-														adipisicing elit. Doloribus nulla fugit asperiores
-														voluptatum illo aspernatur eligendi repellat! Esse,
-														debitis libero nam quae eos, ipsum iure placeat sit saepe
-														alias vero. Lorem ipsum dolor sit amet consectetur,
-														adipisicing elit. Doloribus nulla fugit asperiores
-														voluptatum illo aspernatur eligendi repellat! Esse,
-														debitis libero nam quae eos, ipsum iure placeat sit saepe
-														alias vero.</p>
-													<p class="">
-														<a href="" id="readMore">Read More</a>
-													</p>
-												</div>
-											</div>
-
-											<div id="commentBox" class="mt-2 animate fadeUp"></div>
-											<div class="mynavbar mt-2 mainComment hide-on-med-and-down">
-												<nav
-													class=" navbar-main navbar-color white round-comment  no-shadow">
-													<form>
-														<div class="navwrap z-depth-2">
-															<div class="col s1 pr-0 avtar-icon">
-																<a href="#"><img class="responsive-img circle"
-																	th:src="@{/app-assets/images/user/12.jpg}" alt="" /></a>
-															</div>
-															<div class="headersearchwrapper hide-on-med-and-down ">
-																<p class="lead emoji-picker-container">
-																	<input
-																		class="headersearchinput z-depth-2 black-text commentText"
-																		type="text" name="Search"
-																		placeholder="Add Public Comments"
-																		data-emojiable="true">
-																</p>
-															</div>
-															<!-- <i class="material-icons sendBtn pointer  purple-text accent-2">send</i> -->
-
-															<i
-																class="material-icons sendBtn pointer sendComment  purple-text accent-2">send</i>
-
-														</div>
-													</form>
-												</nav>
-
-											</div>
-
-											<div class="mynavbar mt-2 replyComment hide-on-med-and-down "
-												style="display: none;">
-												<nav
-													class=" navbar-main navbar-color white round-comment  no-shadow">
-													<form>
-														<div class="navwrap z-depth-2">
-															<div class="col s1 pr-0 avtar-icon">
-																<a href="#"><img class="responsive-img circle"
-																	th:src="@{/app-assets/images/user/12.jpg}" alt=""></a>
-															</div>
-															<div class="headersearchwrapper hide-on-med-and-down ">
-																<p class="lead emoji-picker-container">
-																	<input
-																		class="headersearchinput z-depth-2 black-text replyText"
-																		type="text" name="Search"
-																		placeholder="Add Public Comments"
-																		data-emojiable="true">
-																</p>
-															</div>
-															<!-- <i class="material-icons sendBtn pointer  purple-text accent-2">send</i> -->
-
-															<i
-																class="material-icons sendBtn pointer sendComment  purple-text accent-2">send</i>
-
-														</div>
-													</form>
-												</nav>
-
-											</div>
-
-
-										</div>
-
-									</div>
-
-									<div
-										class="card recent-buyers-card animate fadeUp z-depth-2  CommentList">
-										<div class="card-content">
-											<h4 class="card-title">
-												Comments&nbsp;<span
-													class="badge new badge pill pink accent-2 mt-2">5</span>
-											</h4>
-											<hr class="mt-2 z-depth-5 ">
-											<ul class="collection mb-0 replyBoxShow">
-												<li class="collection-item avatar"><img
-													th:src="@{app-assets/images/avatar/avatar-7.png}" alt=""
-													class="circle mt-3" />
-													<p class="font-weight-600 username">
-														John Doe<span class="ml-2 Time">20, January 2019</span>
-													</p>
-													<p class="medium-small comment">This is my Comments</p>
-													<p class="medium-small mt-1">
-														<span><i class="fa fa-thumbs-up fa-lg pointer"
-															aria-hidden="true"><span class="medium-small">20</span></i></span>
-														<span><i
-															class="fa fa-thumbs-down fa-lg ml-3 pointer"
-															aria-hidden="true"><span class="medium-small">8</span></i></span>
-														<span><i
-															class="fa fa-reply fa-lg ml-3 reply pointer"
-															th:attr="onclick='reply(id)'" aria-hidden="true"></i></span>
-
-													</p>
-
-													<ul class="collection mb-0">
-														<li class="collection-item avatar"><img
-															th:src="@{/app-assets/images/avatar/avatar-7.png}" alt=""
-															class="circle mt-3" />
-															<p class="font-weight-600">
-																John Doe<span class="ml-2">20, January 2019</span>
-															</p>
-															<p class="medium-small">This is my Comments</p>
-															<p class="medium-small mt-1">
-																<span><i class="fa fa-thumbs-up fa-lg pointer"
-																	aria-hidden="true"><span class="medium-small">20</span></i></span>
-																<span><i
-																	class="fa fa-thumbs-down fa-lg ml-3 pointer"
-																	aria-hidden="true"><span class="medium-small">8</span></i></span>
-																<span><i
-																	class="fa fa-reply fa-lg ml-3 reply pointer"
-																	aria-hidden="true" th:attr="onclick='reply(id)'"></i></span>
-															</p></li>
-													</ul></li>
-												<li class="collection-item avatar"><img
-													th:src="@{/app-assets/images/avatar/avatar-7.png}" alt=""
-													class="circle mt-3" />
-													<p class="font-weight-600 username">
-														John Doe<span class="ml-2 Time">20, January 2019</span>
-													</p>
-													<p class="medium-small comment">This is my Comments</p>
-													<p class="medium-small mt-1">
-														<span><i class="fa fa-thumbs-up fa-lg pointer"
-															aria-hidden="true"><span class="medium-small">20</span></i></span>
-														<span><i
-															class="fa fa-thumbs-down fa-lg ml-3 pointer"
-															aria-hidden="true"><span class="medium-small">8</span></i></span>
-														<span><i
-															class="fa fa-reply fa-lg ml-3 reply pointer"
-															aria-hidden="true" th:attr="onclick='reply(id)'"></i></span>
-													</p>
-													<ul class="collection mb-0">
-														<li class="collection-item avatar"><img
-															th:src="@{/app-assets/images/avatar/avatar-7.png}" alt=""
-															class="circle mt-3" />
-															<p class="font-weight-600">
-																John Doe<span class="ml-2">20, January 2019</span>
-															</p>
-															<p class="medium-small">This is my Comments</p>
-															<p class="medium-small mt-1">
-																<span><i class="fa fa-thumbs-up fa-lg pointer"
-																	aria-hidden="true"><span class="medium-small">20</span></i></span>
-																<span><i
-																	class="fa fa-thumbs-down fa-lg ml-3 pointer"
-																	aria-hidden="true"><span class="medium-small">8</span></i></span>
-																<span><i
-																	class="fa fa-reply fa-lg ml-3 reply pointer"
-																	aria-hidden="true" th:attr="onclick='reply(id)'"></i></span>
-
-															</p></li>
-													</ul></li>
+        <div class="card user-card-negative-margin z-depth-0 " id="feed">
+         
+       
+         <th:block th:if="${Posts != null}">
+          <th:block th:each="post : ${Posts}">
+          <div class="card-content card-border-gray">
 
 
 
-											</ul>
-										</div>
-									</div>
+            <!--Test 1-->
+            <div id="test1 ">
 
+              <div class="row">
 
+                <div class="mt-0 ">
+                  <div class="col s1 pr-0 circle ">
+                    <a href="#"><img class="responsive-img circle" src="../../../app-assets/images/user/12.jpg"
+                        alt=""></a>
+                  </div>
+                  <div class="col s11 mt2 ">
+                    <i class="material-icons float-right mt-2 dropdown-trigger " data-target='dropdown1'
+                      style="cursor: pointer;">more_vert</i>
+                    <a href="#">
+                      <p class="mt-2">[[${post.CreatedBy}]] <i class="material-icons vertical-align-bottom blue-text">stars</i>
+                        <span><i class="material-icons vertical-align-bottom">access_time</i><span th:attr="data-livestamp=(${post.CreatedDate})"></span></span></p>
 
-								</div>
-
-
-
-							</div>
-						</div>
-					</div>
-					<hr class="mt-5">
-				</div>
+                    </a>
 
 
 
 
+                  </div>
+                  <ul id='dropdown1' class='dropdown-content '>
+                    <li><a href="#!">Unfollow</a></li>
+                    <li><a href="#!">Copy Link</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">three</a></li>
+                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+                  </ul>
+                </div>
+
+                <div class="row ">
+                  <div class="col s12 l10">
+                    <div class="card card-border z-depth-2 ">
+                    <th:block th:if="${#lists.size(post.postImages) >  1}"> 
+                     <th:block th:each="postImage : ${post.postImages}">
+                      <div class="card-image">
+                        <div class="carousel carousel-slider">
+                          <a class="carousel-item" href="#one!"><img th:src="@{${postImage}}"
+                              class="carImageSlide" alt=""></a>
+                        </div>
+                      </div>
+                      </th:block>
+                      </th:block>
+                      
+                      <th:block th:if="${#lists.size(post.postImages) ==  1}">
+                      	<a  href="#one!"><img th:src="@{${post.postImages}}"
+                              class="carImageSlide" alt=""></a>
+                      </th:block>
+                      
+                      <div class="card-content">
+                        <div class="social-icon "
+                          style="padding: 15px;padding-left: 0px;padding-top: 0px;margin-top: 0px;">
+                          <span id="notloveBtn"><i
+                              class="material-icons vertical-align-bottom mr-1 notloveBtn pointer">favorite_border</i>90</span>
+                          <span id="loveBtn"><i
+                              class="material-icons red-text vertical-align-bottom mr-1 loveBtn pointer">favorite</i>90</span>
+                          <i class="material-icons vertical-align-bottom ml-3 mr-1 pointer"
+                            id="opencomment">chat_bubble_outline</i>
+                          15 <span><i class="material-icons vertical-align-bottom ml-3 mr-1 pointer">redo</i>
+                            6</span>
+                        </div>
+                        <h6 class="font-weight-900 text-uppercase"><a href="#">Designing Services</a></h6>
+                        <p>UI/UX & Graphics Design</p>
+                        <p class="crop-text-2">
+                          <a href="#!">@Username</a> 
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
+                        </p>
+                        <p class="crop-text-2">
+                          <a href="#!">@Username</a> Very nicee
+                        </p>
+                        <p class="crop-text-2">
+                          <a href="#!">@Username</a> Very nicee
+                        </p>
+                        <p class="crop-text-3">
+                          <a href="#!">@Username</a> Very nicee
+                        </p>
+                        <p class=""><a href="" id="readMore">Read More</a></p>
+                      </div>
+                    </div>
+
+                    <div id="commentBox" class="mt-2 animate fadeUp"></div>
+                    <div class="mynavbar mt-2 mainComment hide-on-med-and-down">
+                      <nav class=" navbar-main navbar-color white round-comment  no-shadow">
+                        <form>
+                          <div class="navwrap z-depth-2">
+                            <div class="col s1 pr-0 avtar-icon" >
+                              <a href="#"><img class="responsive-img circle"
+                                  src="../../../app-assets/images/user/12.jpg" width="200" alt=""></a>
+                            </div>
+                            <div class="headersearchwrapper hide-on-med-and-down ">
+                              <p class="lead emoji-picker-container">
+                                <input class="headersearchinput z-depth-2 black-text commentText" type="text"
+                                  name="Search" placeholder="Add Public Comments" data-emojiable="true">
+                              </p>
+                            </div>
+                            <!-- <i class="material-icons sendBtn pointer  purple-text accent-2">send</i> -->
+
+                            <i class="material-icons sendBtn pointer sendComment  purple-text accent-2">send</i>
+
+                          </div>
+                        </form>
+                      </nav>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              
+              </div>
 
 
 
-				<div>
-					<th:block th:each="username : ${usernames}">
+            </div>
+          </div>
+           <hr class="mt-0">
+          </th:block>
+         
+          </th:block>
+           <th:block th:unless="${Posts == null}">
+        	<div class="col offset-l3 offset-m3 s12 m6 l6  center-text">
+                              <div class="card gradient-45deg-light-blue-cyan gradient-shadow">
+                                    <div class="card-content white-text">
+                                          <span class="card-title">No Posts Yet</span>
+                                          <p>
+                                                Create a any kind of posts like Blog,Forum,Job and Normal Image posts
+                                                with the help of MateClub and share it with your friends.
+                                          </p>
+                                    </div>
+                                    <div class="card-action center-text">
+                                          <a href="#!" class="waves-effect waves-light btn gradient-45deg-red-pink">Add new Post</a>
+                                    </div>
+                              </div>
+                        </div>
+        	
+        </th:block>   
+          
+        </div>
+        
 
-						<div th:text="${username}"></div>
-					</th:block>
+      
 
-				</div>
-			</div>
 
-		</div>
+
+      </div>
+      <div class="mynavbar mt-2 replyComment hide-on-med-and-down " style="display: none;">
+        <nav class=" navbar-main navbar-color white round-comment  no-shadow">
+          <form>
+            <div class="navwrap z-depth-2">
+              <div class="col s1 pr-0 avtar-icon">
+                <a href="#"><img class="responsive-img circle" src="../../../app-assets/images/user/12.jpg" alt=""></a>
+              </div>
+              <div class="headersearchwrapper hide-on-med-and-down ">
+                <p class="lead emoji-picker-container">
+                  <input class="headersearchinput z-depth-2 black-text replyText" type="text" name="Search"
+                    placeholder="Add Public Comments" data-emojiable="true">
+                </p>
+              </div>
+              <!-- <i class="material-icons sendBtn pointer  purple-text accent-2">send</i> -->
+
+              <i class="material-icons sendBtn pointer sendComment  purple-text accent-2">send</i>
+
+            </div>
+          </form>
+        </nav>
+
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="card recent-buyers-card animate fadeUp " style="height: 100%;">
+          <div class="card-content ">
+            <h4 class="card-title mb-0">Follow <i class="material-icons float-right">more_vert</i></h4>
+
+            <div class="card-scroll1">
+              <ul class="collection mb-0 ">
+
+			<th:block th:each="user : ${users}">
+			
+                <li class="collection-item avatar mt-5">
+                  
+                  <img th:src="@{${user.profilePicture}}" alt="" class="circle" />
+                  <p class="font-weight-600">[[${user.fname}]]&nbsp;[[${user.lname}]]  </p>
+                   <p class="medium-small"> <a th:href="@{'/user/profile/'+${user.id}}">@[[${user.username}]]</a></p> 
+                  <a class="border-round secondary-content mt-1 mb-1 follow-btn">Follow</a>
+                  <!-- <a class="border-round secondary-content mt-1 mb-1 unfollow-btn">Following</a> -->
+                
+                </li>
+			</th:block>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card recent-buyers-card animate fadeUp " style="height: 100%;">
+          <div class="card-content friend-suggestion">
+            <h4 class="card-title mb-0">Friends Suggestion <i class="material-icons float-right">more_vert</i></h4>
+
+            <div class="card-scroll2">
+              <ul class="collection mb-0 ">
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-7.png" alt="" class="circle">
+                  <p class="font-weight-600">John Doe</p>
+                  <p class="medium-small">18, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
+                  <p class="font-weight-600">Adam Garza</p>
+                  <p class="medium-small">20, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
+                  <p class="font-weight-600">Adam Garza</p>
+                  <p class="medium-small">20, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
+                  <p class="font-weight-600">Adam Garza</p>
+                  <p class="medium-small">20, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
+                  <p class="font-weight-600">Adam Garza</p>
+                  <p class="medium-small">20, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
+                  <p class="font-weight-600">Adam Garza</p>
+                  <p class="medium-small">20, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <img src="../../../app-assets/images/avatar/avatar-5.png" alt="" class="circle">
+                  <p class="font-weight-600">Jennifer Rice</p>
+                  <p class="medium-small">25, January 2019</p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Today Highlight -->
+  </div>
+
+
 
 	</th:block>
 	<!-- / Intro -->
@@ -343,13 +347,32 @@
 		<script th:src="@{/app-assets/lib/js/util.js}"></script>
 		<script th:src="@{/app-assets/lib/js/jquery.emojiarea.js}"></script>
 		<script th:src="@{/app-assets/lib/js/emoji-picker.js}"></script>
+		<script src="../static/app-assets/js/scripts/livestamp.min.js"
+			th:src="@{/app-assets/js/scripts/moment.js}"
+			type="text/javascript"></script>
+
+			<script src="../static/app-assets/js/scripts/livestamp.min.js"
+			th:src="@{/app-assets/js/scripts/livestamp.min.js}"
+			type="text/javascript"></script>
 
 		<script>
-			function reply(caller) {
-				$(".replyComment").insertAfter('.replyBoxShow');
-				$(".replyComment").toggle(100);
-
-			}
+			
+			
+			$(document).ready(function () {
+			      $('.dropdown-trigger').dropdown({
+			        inDuration: 300,
+			        outDuration: 225,
+			        constrainWidth: false, // Does not change width of dropdown to that of the activator
+			        // Activate on hover
+			        gutter: 0, // Spacing from edge
+			        coverTrigger: false, // Displays dropdown below the button
+			        alignment: 'right', // Displays dropdown with edge aligned to the left of button
+			        stopPropagation: false // Stops event propagation
+			      }
+			      );
+			});
+			
+			
 		</script>
 
 		<!-- /JS FILES -->

@@ -1,5 +1,6 @@
 package com.ngu.Repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,6 +32,10 @@ public interface UserRepository extends JpaRepository<User, Integer>
 	 * @param username
 	 * @return
 	 */
+	public List<User> findTop10ByOrderByIdDesc();
+	
+	
+	
 	public Optional<User> findUByUsername(String username);
 	
 }

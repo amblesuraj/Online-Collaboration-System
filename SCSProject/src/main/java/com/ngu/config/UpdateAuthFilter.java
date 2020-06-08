@@ -5,7 +5,6 @@ package com.ngu.config;
 
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import javax.servlet.FilterChain;
@@ -13,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionBindingListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +24,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -34,7 +33,6 @@ import com.ngu.Model.CustomUserDetails;
 import com.ngu.Model.Role;
 import com.ngu.Model.UpdateUserSessionMessage;
 import com.ngu.Model.User;
-import com.ngu.Model.UserModel;
 import com.ngu.Service.UserService;
 
 /**
@@ -106,19 +104,20 @@ if (session != null)
 					{
 						authorities.add(new SimpleGrantedAuthority(role.getName()));
 					}
-                    CustomUserDetails myCustomUser = new CustomUserDetails(user.getUsername(),
-                                                                 user.getPassword(),
-                                                                 authorities);
+                    CustomUserDetails myCustomUser = new CustomUserDetails(auth.getName(),
+                                                                 null,auth.getAuthorities()
+                                                                 );
                     
 
                     final Authentication newAuth = new UsernamePasswordAuthenticationToken(myCustomUser,authorities);
                     SecurityContextHolder.getContext().setAuthentication(newAuth);
                     
+                  
                 	RequestContextHolder.currentRequestAttributes().setAttribute("SPRING_SECURITY_CONTEXT",newAuth,RequestAttributes.SCOPE_SESSION);
-                    
+                	RequestContextHolder.currentRequestAttributes().setAttribute("userModel",newAuth,RequestAttributes.SCOPE_SESSION);
                     httpServletRequest.getSession().setAttribute("userModel", newAuth);
                     httpServletRequest.getSession().setAttribute("SPRING_SECURITY_CONTEXT", newAuth);
-                    
+                
                 			
                 }
                 else

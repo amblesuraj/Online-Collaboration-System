@@ -14,10 +14,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
@@ -42,20 +42,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		protected void configure(HttpSecurity http) throws Exception {
 			http.cors().and().csrf().disable();
 			http.sessionManagement()
-			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+			.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
 				.sessionFixation()
 					.migrateSession()
 						.maximumSessions(1)
 							.sessionRegistry(sessionRegistry());
 			http.authorizeRequests()
-			.antMatchers("/","/index","/home").authenticated()
+			.antMatchers("/","/index","/home","/user/**").authenticated()
 			.antMatchers("/dashboard/**").permitAll() 
 			.antMatchers("/resources/**","/static/**").permitAll()	
 			.antMatchers("/superadmin/**").hasAuthority("SUPERADMIN")
 			.antMatchers("/admin/**").hasAnyAuthority("SUPERADMIN","ADMIN")
 			.antMatchers("/employee/**").hasAnyAuthority("SUPERADMIN","ADMIN","EMPLOYEE")
 			.antMatchers("/cart/**").hasAnyAuthority("SUPERADMIN","ADMIN","EMPLOYEE","USER")
-			.antMatchers("/anonymous*","/user/**").permitAll()
+			.antMatchers("/anonymous*","/profile/**").permitAll()
 			
 			//.anyRequest().authenticated()
 			.and()
@@ -74,8 +74,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.deleteCookies("JSESSIONID")
 			.invalidateHttpSession(true)
 			.and()			
-			.rememberMe().rememberMeParameter("remember-me")
-			.tokenRepository(persistentTokenRepository())
+			.rememberMe()
+			.rememberMeServices(rememberMeServices())
+			.rememberMeParameter("remember-me")
+//			.tokenRepository(persistentTokenRepository())
 			.alwaysRemember(true).tokenValiditySeconds(2592000)
 			.and()
 			.exceptionHandling().accessDeniedPage("/dashboard/accessDenied");
@@ -91,12 +93,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		}
 
 		@Bean
-		public PersistentTokenRepository persistentTokenRepository()
+		public RememberMeServices rememberMeServices()
 		{
-			JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl = new JdbcTokenRepositoryImpl();
-			jdbcTokenRepositoryImpl.setDataSource(dataSource);
-			return jdbcTokenRepositoryImpl;
+			SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
+	        rememberMeServices.setAlwaysRemember(true);
+	        rememberMeServices.setRememberMeParameterName(SpringSessionRememberMeServices.REMEMBER_ME_LOGIN_ATTR);
+	        return rememberMeServices;
 		}
+		
+//		@Bean
+//		public PersistentTokenRepository persistentTokenRepository()
+//		{
+//			JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+//			jdbcTokenRepositoryImpl.setDataSource(dataSource);
+//			return jdbcTokenRepositoryImpl;
+//		}
 
 		@Bean
 	    public BCryptPasswordEncoder bCryptPasswordEncoder() {

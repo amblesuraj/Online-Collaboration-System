@@ -21,11 +21,9 @@ public class UserModel implements Serializable {
     private String lname;
     private String email;
     private String username;
-
+    public String profilePicture;
     private User user;
-    
-    private Profile profile;
-
+   
     private Role role;
     private long phone;
 

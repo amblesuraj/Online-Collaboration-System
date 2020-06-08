@@ -59,12 +59,11 @@ public class GlobleController {
 					userModel.setFullName(user.getFname() + " " + user.getLname());
 					userModel.setEmail(user.getEmail());
 					userModel.setUsername(user.getUsername());
-					
+					userModel.setProfilePicture(user.getProfilePicture());
 					for (Role role : user.getRoles()) {
 						userModel.setRole(role);
 					}
 					
-					userModel.setProfile(user.getProfile());
 					
 					userModel.setPhone(user.getPhone());
 					userModel.setUser(user);

@@ -29,4 +29,9 @@ public interface PostService {
 	 */
 	public void createPost(Post post);
 
+	/**
+	 * @param id
+	 */
+	
+
 }

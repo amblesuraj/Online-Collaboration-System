@@ -24,10 +24,21 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+@JsonInclude(JsonInclude.Include.NON_NULL)	
+@JsonIgnoreProperties(value = "profilePicture")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -76,6 +87,9 @@ public class User implements Serializable{
     @Column(name = "active")
     private boolean active;
 
+//    @JsonIgnore
+    @Column(name = "profilePicture")
+    public String profilePicture;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
@@ -89,6 +103,8 @@ public class User implements Serializable{
     
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
     private Profile profile;
+    
+    
     
     
 

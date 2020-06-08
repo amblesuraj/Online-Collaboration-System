@@ -1,3 +1,10 @@
+/*================================================================================
+  Item Name: Materialize - Material Design Admin Template
+  Version: 5.0
+  Author: PIXINVENT
+  Author URL: https://themeforest.net/user/pixinvent/portfolio
+================================================================================*/
+
 $(function() {
    "use strict";
 
@@ -299,6 +306,60 @@ $(function() {
          suppressScrollX: true
       });
    }
+
+   
+   if ($("#myDiv").length > 0) {
+      var myDiv = new PerfectScrollbar("#myDiv", {
+         suppressScrollX: true,
+         wheelSpeed: 2,
+         wheelPropagation: false,
+         minScrollbarLength: 20
+      });
+   }
+
+   if ($(".card-scroll").length > 0) {
+      var card = new PerfectScrollbar(".card-scroll", {
+         suppressScrollX: true,
+         wheelSpeed: 2,
+         wheelPropagation: false,
+         minScrollbarLength: 20
+      });
+   }
+
+   if ($(".card-scroll1").length > 0) {
+      var card1 = new PerfectScrollbar(".card-scroll1", {
+         suppressScrollX: true,
+         wheelSpeed: 2,
+         wheelPropagation: false,
+         minScrollbarLength: 5
+      });
+   }
+
+   if ($(".card-scroll2").length > 0) {
+      var card2 = new PerfectScrollbar(".card-scroll2", {
+         suppressScrollX: true,
+         wheelSpeed: 2,
+         wheelPropagation: false,
+         minScrollbarLength: 20
+      });
+   }
+
+
+
+   if ($(".windowScroll").length > 0) {
+      var cardd = new PerfectScrollbar(".windowScroll", {
+         suppressScrollX: true,
+         wheelSpeed: 2,
+         wheelPropagation: false,
+         minScrollbarLength: 20
+      });
+   }
+   
+   
+   
+
+  
+
    if ($(".chat-body .collection").length > 0) {
       var ps_slideout_chat = new PerfectScrollbar(".chat-body .collection", {
          suppressScrollX: true
@@ -372,13 +433,13 @@ $(window).on("resize", function() {
 function resizetable() {
    if($(window).width() < 976){
       if($('.vertical-layout.vertical-gradient-menu .sidenav-dark .brand-logo').length > 0){
-         $('.vertical-layout.vertical-gradient-menu .sidenav-dark .brand-logo img').attr('src','../static/app-assets/images/logo/materialize-logo-color.png');
+         $('.vertical-layout.vertical-gradient-menu .sidenav-dark .brand-logo img').attr('src','../../../app-assets/images/logo/materialize-logo-color.png');
       }
       if($('.vertical-layout.vertical-dark-menu .sidenav-dark .brand-logo').length > 0){
-         $('.vertical-layout.vertical-dark-menu .sidenav-dark .brand-logo img').attr('src','../../app-assets/images/logo/materialize-logo-color.png');
+         $('.vertical-layout.vertical-dark-menu .sidenav-dark .brand-logo img').attr('src','../../../app-assets/images/logo/materialize-logo-color.png');
       }
       if($('.vertical-layout.vertical-modern-menu .sidenav-light .brand-logo').length > 0){
-         $('.vertical-layout.vertical-modern-menu .sidenav-light .brand-logo img').attr('src','../../app-assets/images/logo/materialize-logo.png');
+         $('.vertical-layout.vertical-modern-menu .sidenav-light .brand-logo img').attr('src','../../../app-assets/images/logo/materialize-logo.png');
       }
    }
    else{

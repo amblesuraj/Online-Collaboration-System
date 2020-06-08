@@ -50,6 +50,15 @@
 <link rel="stylesheet" type="text/css"
 	href="../static/app-assets/css/custom/custom.css"
 	th:href="@{/app-assets/css/custom/custom.css}" />
+	<style type="text/css">
+	img {
+		max-width: 100%;
+	}
+	
+	i.icon-yellow {
+    color: yellow;
+}
+	</style>
 <!-- END: Custom CSS-->
 </head>
 <!-- END: Head-->
@@ -108,15 +117,18 @@
 				<div class="col s12">
 					<div class="container">
 						<div class="row user-profile mt-1">
-
-							<div class="col s12 m12 l12">
-
-								<img class="responsive-img" id="profileImage" alt=""
-									src="../static/app-assets/images/gallery/profile-bg.png"
-									th:src="@{/app-assets/images/gallery/profile-bg.png}" /> <input
-									type="file" id="profileFile" hidden />
-							</div>
-
+							
+								<div class="col s12 m12 l12">
+							<form id="profileBackPicture">
+									<img class="responsive-img tooltipped"  data-position="bottom" data-tooltip="Click to Change Cover Photo" id="profileBg"
+										src="../static/app-assets/images/gallery/profile-bg.png"
+										th:src="${(user.Profile.coverPhoto == null && #strings.isEmpty(user.Profile.coverPhoto)) }  ? @{/app-assets/images/gallery/profile-bg.png} : ${user.Profile.coverPhoto}" alt="ProfileBackground" />
+										<input
+										type="file" id="profileBgFile" hidden="hidden" />
+										<input type="hidden" th:value="${user.id}" id="uId">
+							</form>
+								</div>
+							
 
 						</div>
 						<div class="section" id="user-profile">
@@ -124,15 +136,21 @@
 								<!-- User Profile Feed -->
 								<div class="col s12 m4 l3 user-section-negative-margin">
 									<div class="row">
+									
 										<div class="col s12 center-align">
-											<img class="responsive-img circle z-depth-5" width="200"
+									<form id="profilePictureForm">
+											<img class="responsive-img circle z-depth-5 tooltipped" id="profileImage" name="profileImage"  width="200"
 												src="../static/app-assets/images/user/12.jpg"
-												th:src="${(userModel.Profile.profilePicture == null && #strings.isEmpty(userModel.Profile.profilePicture)) }  ? @{/app-assets/images/user/12.jpg} : userModel.Profile.profilePicture" alt="Profile Picture" />
-														
+												data-position="bottom" data-tooltip="Click to Change Profile Picture"
+												th:src="${(user.profilePicture == null && #strings.isEmpty(user.profilePicture)) }  ? @{/app-assets/images/user/12.jpg} : ${user.profilePicture}" alt="Profile Picture" />
+													<input
+										type="file" id="profileFile" hidden="hidden" name="profileImage"/>	
 											 <br>
+									</form>		 
 											<a class="waves-effect waves-light btn mt-5 border-radius-4">
 												Follow</a>
 										</div>
+										
 									</div>
 									<div class="row mt-5">
 										<div class="col s6">
@@ -497,18 +515,7 @@
 				
 		<!-- /JS FILES -->
 
-		<script>
-			$(function() {
-				$("#profileImage").click(function() {
-					$("#profileFile").click();
-				});
-
-				$("#profileFile").change(function() {
-					alert("file Uploaded");
-				});
-
-			});
-		</script>
+		
 
 
 	</th:block>
