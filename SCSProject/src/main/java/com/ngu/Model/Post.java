@@ -53,7 +53,9 @@ public class Post extends Auditor<String> {
 	
 	private PostStatus status;
 	
-	 @OneToOne(cascade = CascadeType.ALL,mappedBy = "post",fetch = FetchType.EAGER)
-	    private Like like;
+	@OneToOne
+	private User user;
+	 
+	
 	
 }

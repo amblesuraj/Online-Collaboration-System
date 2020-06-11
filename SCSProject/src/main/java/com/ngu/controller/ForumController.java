@@ -3,6 +3,8 @@
  */
 package com.ngu.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ngu.Model.Forum;
+import com.ngu.Model.Post;
 import com.ngu.Service.ForumService;
 
 /**
@@ -54,4 +57,14 @@ public class ForumController
 		
 		return "redirect:/forum?deleted"+id; 
 	}
+	
+	@RequestMapping(value = "/user/forum/{id}")
+	public String getUsersPosts(@PathVariable int id,Model model)
+	{
+		
+		List<Forum> forums = forumService.findAllForumsOrderByDesc();
+		model.addAttribute("forums", forums);
+		return "AllForums";
+	}
+	
 }

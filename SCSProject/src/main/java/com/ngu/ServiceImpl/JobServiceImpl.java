@@ -3,12 +3,15 @@
  */
 package com.ngu.ServiceImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ngu.Model.Job;
+import com.ngu.Model.Post;
 import com.ngu.Repositories.JobRepository;
 import com.ngu.Service.JobService;
 
@@ -50,6 +53,12 @@ public class JobServiceImpl implements JobService
 	{
 		jobRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Job> findAllJobsOrderByDesc() {
+		// TODO Auto-generated method stub
+		return jobRepository.findAllByOrderByIdDesc();
 	}
 
 }

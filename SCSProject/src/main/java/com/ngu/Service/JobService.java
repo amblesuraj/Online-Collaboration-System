@@ -3,6 +3,8 @@
  */
 package com.ngu.Service;
 
+import java.util.List;
+
 import com.ngu.Model.Job;
 
 /**
@@ -19,4 +21,6 @@ public interface JobService
 	public Job findById(int id);
 	
 	public void deleteJob(int id);
+
+	public List<Job> findAllJobsOrderByDesc();
 }

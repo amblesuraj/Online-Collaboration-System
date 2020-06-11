@@ -17,5 +17,7 @@ import com.ngu.Model.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer>{
 
+	List<Post> findAllByOrderByIdDesc();
+
 //	List<Post> findByIdAndCreatedByOrderByIdDesc(); 
 }

@@ -17,7 +17,7 @@
 					src="../static/app-assets/images/logo/materialize-logo-color.png"
 					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
 					alt="materialize logo" /><span
-					class="logo-text hide-on-med-and-down">Student's Club</span></a><a
+					class="logo-text hide-on-med-and-down">MateClub</span></a><a
 					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
 			</h1>
 			
@@ -66,20 +66,19 @@
 				class="navigation-header-icon material-icons">more_horiz</i></li>
 				
 			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/app-email"><i class="material-icons">mail_outline</i><span
-					class="menu-title" data-i18n="">Mail</span><span
-					class="badge new badge pill pink accent-2 float-right mr-10">5</span></a>
+				th:href="@{'/post/'+${userModel.id}}"><i class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Posts</span></a>
 			</li>
 			<li class="bold"><a class="waves-effect waves-cyan "
 				th:class="${isAppChat} ? 'active' : '' " href="/admin/app-chat"><i
-					class="material-icons">chat_bubble_outline</i><span
-					class="menu-title" data-i18n="">Chat</span></a></li>
+					class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Blogs</span></a></li>
 			<li class="bold"><a class="waves-effect waves-cyan "
 				href="/admin/app-todo"><i class="material-icons">check</i><span
-					class="menu-title" data-i18n="">ToDo</span></a></li>
+					class="menu-title" data-i18n="">My Forums</span></a></li>
 			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/app-contacts"><i class="material-icons">import_contacts</i><span
-					class="menu-title" data-i18n="">Contacts</span></a></li>
+				href="/admin/app-contacts"><i class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Jobs</span></a></li>
 			<li class="bold"><a class="waves-effect waves-cyan "
 				href="/admin/app-calendar"><i class="material-icons">today</i><span
 					class="menu-title" data-i18n="">Calendar</span></a></li>

@@ -3,6 +3,8 @@
  */
 package com.ngu.Service;
 
+import java.util.List;
+
 import com.ngu.Model.Forum;
 
 /**
@@ -17,5 +19,6 @@ public interface ForumService
 		
 		public Forum FindById(int id);
 		public void deleteById(int id);
+		public List<Forum> findAllForumsOrderByDesc();
 		
 }

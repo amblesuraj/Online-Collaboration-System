@@ -2,6 +2,7 @@
 package com.ngu.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -85,6 +86,14 @@ public class BlogController {
 		
 		blogService.DeleteBlogById(id);
 		return "redirect:/blog?deleted"+id;
+	}
+	
+	@RequestMapping(value = "/user/blog/{id}")
+	public String getUsersPosts(@PathVariable int id,Model model)
+	{
+		List<Blog> blogs = blogService.findAllBlogsOrderByDesc();
+		model.addAttribute("blogs", blogs);
+		return "AllBlogs";
 	}
 
 }

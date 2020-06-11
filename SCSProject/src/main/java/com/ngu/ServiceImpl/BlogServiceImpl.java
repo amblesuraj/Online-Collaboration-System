@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ngu.Model.Blog;
+import com.ngu.Model.Post;
 import com.ngu.Repositories.BlogRepository;
 import com.ngu.Service.BlogService;
 
@@ -53,6 +54,12 @@ public class BlogServiceImpl implements BlogService
 	
 		blogRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Blog> findAllBlogsOrderByDesc() {
+		// TODO Auto-generated method stub
+		return blogRepository.findAllByOrderByIdDesc();
 	}
 
 }

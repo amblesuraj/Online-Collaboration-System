@@ -104,7 +104,8 @@ public class User implements Serializable{
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
     private Profile profile;
     
-    
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
+    private Post post;
     
     
 

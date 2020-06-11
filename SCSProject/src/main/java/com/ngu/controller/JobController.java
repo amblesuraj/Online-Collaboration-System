@@ -3,6 +3,8 @@
  */
 package com.ngu.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ngu.Model.Job;
+import com.ngu.Model.Post;
 import com.ngu.Service.JobService;
 
 /**
@@ -55,5 +58,14 @@ public class JobController
 		jobService.deleteJob(id);
 		return "redirect:/forum?deleted"+id; 
 	}
+	
+	@RequestMapping(value = "/user/job/{id}")
+	public String getUsersPosts(@PathVariable int id,Model model)
+	{
+		List<Job> jobs = jobService.findAllJobsOrderByDesc();
+		model.addAttribute("jobs", jobs);
+		return "AllJobs";
+	}
+	
 	
 }

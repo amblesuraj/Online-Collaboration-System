@@ -78,6 +78,12 @@ public class PostServiceImpl implements PostService{
 		
 	}
 
+	@Override
+	public List<Post> findAllPostsOrderByDesc() {
+		// TODO Auto-generated method stub
+		return postRepository.findAllByOrderByIdDesc();
+	}
+
 	
 
 }

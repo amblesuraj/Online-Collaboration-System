@@ -29,6 +29,8 @@ public interface PostService {
 	 */
 	public void createPost(Post post);
 
+	public List<Post> findAllPostsOrderByDesc();
+
 	/**
 	 * @param id
 	 */

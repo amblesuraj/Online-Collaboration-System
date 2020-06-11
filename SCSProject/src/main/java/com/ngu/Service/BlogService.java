@@ -6,6 +6,7 @@ package com.ngu.Service;
 import java.util.List;
 
 import com.ngu.Model.Blog;
+import com.ngu.Model.Post;
 
 /**
  * @author SURAJ
@@ -23,4 +24,6 @@ public interface BlogService
 	 Blog findById(int id);
 	 
 	 void DeleteBlogById(int id);
+
+	List<Blog> findAllBlogsOrderByDesc();
 }

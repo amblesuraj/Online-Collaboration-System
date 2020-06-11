@@ -48,13 +48,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 						.maximumSessions(1)
 							.sessionRegistry(sessionRegistry());
 			http.authorizeRequests()
-			.antMatchers("/","/index","/home","/user/**").authenticated()
+			.antMatchers("/","/index","/home","/user/**,/post/**").authenticated()
 			.antMatchers("/dashboard/**").permitAll() 
 			.antMatchers("/resources/**","/static/**").permitAll()	
 			.antMatchers("/superadmin/**").hasAuthority("SUPERADMIN")
 			.antMatchers("/admin/**").hasAnyAuthority("SUPERADMIN","ADMIN")
 			.antMatchers("/employee/**").hasAnyAuthority("SUPERADMIN","ADMIN","EMPLOYEE")
-			.antMatchers("/cart/**").hasAnyAuthority("SUPERADMIN","ADMIN","EMPLOYEE","USER")
+			.antMatchers("/cart/**","/blog/**","/forum/**").hasAnyAuthority("SUPERADMIN","ADMIN","EMPLOYEE","USER")
 			.antMatchers("/anonymous*","/profile/**").permitAll()
 			
 			//.anyRequest().authenticated()

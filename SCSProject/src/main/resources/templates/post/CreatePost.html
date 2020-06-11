@@ -71,13 +71,7 @@
 					Posts</a>
 			</div>
 			<form th:action="@{/post/save-post}" th:object="${post}" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<label for="" class="text-dark font-weight-bold">Post Title</label>
-					<input type="text" class="form-control" name="posttitle"
-						id="posttitle" aria-describedby="helpId" placeholder="">
-						<p th:if="${#fields.hasErrors('posttitle')}" th:field="*{posttitle}"
-						th:errors="*{posttitle}" class="text-danger">Incorrect</p>
-				</div>
+				
 				<div class="form-group">
 					<label for="" class="text-dark font-weight-bold">Featured
 						Image</label> <input type="file" class="form-control-file text-dark"
@@ -90,16 +84,12 @@
 				</div>
 				<div class="form-group">
 					<label for="" class="text-dark font-weight-bold">Caption</label>
-					<textarea class="form-control" name="" th:field="*{content}" id="content" rows="3"></textarea>
+					<textarea class="form-control" name="caption" th:field="*{caption}" id="caption" rows="3"></textarea>
 					
 				</div>
-				<div class="form-group">
-					<label for="" class="text-dark font-weight-bold">Post Title</label>
-					<input type="text" class="form-control" name="posttitle"
-						id="posttitle" aria-describedby="helpId" placeholder="">
-						<p th:if="${#fields.hasErrors('posttitle')}" th:field="*{posttitle}"
-						th:errors="*{posttitle}" class="text-danger">Incorrect</p>
-				</div>
+				<input type="hidden" name="userId" >
+				
+				
 				
 				<div class="text-center" >
 				<input type="submit" class="btn btn-go-back " style="width:150px" value="Publish"/>

@@ -3,12 +3,12 @@
  */
 package com.ngu.Repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.ngu.Model.Like;
-import java.lang.Integer;
-import java.util.List;
 
 /**
  * @author SURAJ
@@ -18,5 +18,10 @@ import java.util.List;
 public interface LikeRepository extends JpaRepository<Like, Integer>
 {
 
-	List<Like> findByUserIdAndPost(int UserId,int PostId);
+	
+		long countByPostIdAndAction(int postId,String action);
+		
+		Optional<Like> findByUserId(int userId);
+		
+		Like findByPostIdAndUserId(int postId,int userId);
 }

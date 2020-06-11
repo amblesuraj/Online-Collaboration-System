@@ -48,12 +48,12 @@
 
 	 <div id="main">
     <div class="row ">
-
+	
       <div class="col s12 m8 l8 card-scroll">
 
         <div class="card user-card-negative-margin z-depth-0 " id="feed">
          
-       
+    		
          <th:block th:if="${Posts != null}">
           <th:block th:each="post : ${Posts}">
           <div class="card-content card-border-gray">
@@ -67,18 +67,17 @@
 
                 <div class="mt-0 ">
                   <div class="col s1 pr-0 circle ">
-                    <a href="#"><img class="responsive-img circle" src="../../../app-assets/images/user/12.jpg"
-                        alt=""></a>
+                    <a href="#"><img class="responsive-img circle" th:src="@{${post.user.profilePicture}}"
+                        alt="" /></a>
                   </div>
                   <div class="col s11 mt2 ">
                     <i class="material-icons float-right mt-2 dropdown-trigger " data-target='dropdown1'
                       style="cursor: pointer;">more_vert</i>
                     <a href="#">
-                      <p class="mt-2">[[${post.CreatedBy}]] <i class="material-icons vertical-align-bottom blue-text">stars</i>
+                      <p class="mt-2">[[${post.CreatedBy}]] 
                         <span><i class="material-icons vertical-align-bottom">access_time</i><span th:attr="data-livestamp=(${post.CreatedDate})"></span></span></p>
 
                     </a>
-
 
 
 
@@ -96,7 +95,7 @@
                 <div class="row ">
                   <div class="col s12 l10">
                     <div class="card card-border z-depth-2 ">
-                    <th:block th:if="${#lists.size(post.postImages) >  1}"> 
+                    
                      <th:block th:each="postImage : ${post.postImages}">
                       <div class="card-image">
                         <div class="carousel carousel-slider">
@@ -105,33 +104,32 @@
                         </div>
                       </div>
                       </th:block>
-                      </th:block>
-                      
-                      <th:block th:if="${#lists.size(post.postImages) ==  1}">
-                      	<a  href="#one!"><img th:src="@{${post.postImages}}"
-                              class="carImageSlide" alt=""></a>
-                      </th:block>
                       
                       <div class="card-content">
                         <div class="social-icon "
                           style="padding: 15px;padding-left: 0px;padding-top: 0px;margin-top: 0px;">
-                          <span id="notloveBtn"><i
-                              class="material-icons vertical-align-bottom mr-1 notloveBtn pointer">favorite_border</i>90</span>
+                         
+                         
                           <span id="loveBtn"><i
-                              class="material-icons red-text vertical-align-bottom mr-1 loveBtn pointer">favorite</i>90</span>
+                            class="material-icons red-text vertical-align-bottom mr-1 loveBtn pointer">favorite</i><span id="no_of_likes"></span></span>
+                          <span id="notloveBtn"><i
+                              class="material-icons vertical-align-bottom mr-1 notloveBtn pointer">favorite_border</i><span id="no_of_like"></span></span>
+                          		<input type="hidden" id="postId"  th:value="${post.id}">
+                          		<input type="hidden" id="userId" th:value="${userModel.id}">
+                          
                           <i class="material-icons vertical-align-bottom ml-3 mr-1 pointer"
                             id="opencomment">chat_bubble_outline</i>
-                          15 <span><i class="material-icons vertical-align-bottom ml-3 mr-1 pointer">redo</i>
-                            6</span>
+                          15 
+                            
+                         
                         </div>
                         <h6 class="font-weight-900 text-uppercase"><a href="#">Designing Services</a></h6>
-                        <p>UI/UX & Graphics Design</p>
+                        
                         <p class="crop-text-2">
-                          <a href="#!">@Username</a> 
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. A sint quia beatae debitis tempora dolore eaque non perferendis tempore et, incidunt tenetur pariatur placeat, consequatur eveniet quis adipisci temporibus ex!
+                          <a href="#!">[[${post.user.username}]]</a> 
+                          [[${post.caption}]]
                         </p>
+                        <p>View All Comments</p>
                         <p class="crop-text-2">
                           <a href="#!">@Username</a> Very nicee
                         </p>
@@ -139,7 +137,7 @@
                           <a href="#!">@Username</a> Very nicee
                         </p>
                         <p class="crop-text-3">
-                          <a href="#!">@Username</a> Very nicee
+                          <a href="#!">@Username</a> Very nicee 
                         </p>
                         <p class=""><a href="" id="readMore">Read More</a></p>
                       </div>
@@ -152,7 +150,7 @@
                           <div class="navwrap z-depth-2">
                             <div class="col s1 pr-0 avtar-icon" >
                               <a href="#"><img class="responsive-img circle"
-                                  src="../../../app-assets/images/user/12.jpg" width="200" alt=""></a>
+                                  th:src="@{${userModel.profilePicture}}" width="200" alt=""></a>
                             </div>
                             <div class="headersearchwrapper hide-on-med-and-down ">
                               <p class="lead emoji-picker-container">
@@ -185,8 +183,8 @@
           </th:block>
          
           </th:block>
-           <th:block th:unless="${Posts == null}">
-        	<div class="col offset-l3 offset-m3 s12 m6 l6  center-text">
+           <th:block th:if="${Posts == null}">
+        	<div class="col offset-l3 offset-m3 s12 m6 l6  center-align " style="margin-top: 7rem;">
                               <div class="card gradient-45deg-light-blue-cyan gradient-shadow">
                                     <div class="card-content white-text">
                                           <span class="card-title">No Posts Yet</span>
@@ -196,7 +194,7 @@
                                           </p>
                                     </div>
                                     <div class="card-action center-text">
-                                          <a href="#!" class="waves-effect waves-light btn gradient-45deg-red-pink">Add new Post</a>
+                                          <a href="/post" class="waves-effect waves-light btn gradient-45deg-red-pink">Add new Post</a>
                                     </div>
                               </div>
                         </div>
@@ -266,49 +264,18 @@
 
             <div class="card-scroll2">
               <ul class="collection mb-0 ">
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-7.png" alt="" class="circle">
-                  <p class="font-weight-600">John Doe</p>
-                  <p class="medium-small">18, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                <th:block th:each="user : ${users}">
+			
+                <li class="collection-item avatar mt-5">
+                  
+                  <img th:src="@{${user.profilePicture}}" alt="" class="circle" />
+                  <p class="font-weight-600">[[${user.fname}]]&nbsp;[[${user.lname}]]  </p>
+                   <p class="medium-small"> <a th:href="@{'/user/profile/'+${user.id}}">@[[${user.username}]]</a></p> 
+                  <a class="border-round secondary-content mt-1 mb-1 follow-btn">Follow</a>
+                  <!-- <a class="border-round secondary-content mt-1 mb-1 unfollow-btn">Following</a> -->
+                
                 </li>
-
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
-                  <p class="font-weight-600">Adam Garza</p>
-                  <p class="medium-small">20, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
-                  <p class="font-weight-600">Adam Garza</p>
-                  <p class="medium-small">20, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
-                  <p class="font-weight-600">Adam Garza</p>
-                  <p class="medium-small">20, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
-                  <p class="font-weight-600">Adam Garza</p>
-                  <p class="medium-small">20, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-3.png" alt="" class="circle">
-                  <p class="font-weight-600">Adam Garza</p>
-                  <p class="medium-small">20, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
-                <li class="collection-item avatar">
-                  <img src="../../../app-assets/images/avatar/avatar-5.png" alt="" class="circle">
-                  <p class="font-weight-600">Jennifer Rice</p>
-                  <p class="medium-small">25, January 2019</p>
-                  <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                </li>
+			</th:block>
               </ul>
             </div>
 

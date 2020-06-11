@@ -3,6 +3,8 @@
  */
 package com.ngu.ServiceImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,12 @@ public class ForumServiceImpl implements ForumService
 	public void deleteById(int id)
 	{
 			forumRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Forum> findAllForumsOrderByDesc() {
+		// TODO Auto-generated method stub
+		return forumRepository.findAllByOrderByIdDesc();
 	}
 
 }

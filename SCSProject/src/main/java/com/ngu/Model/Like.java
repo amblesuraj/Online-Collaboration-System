@@ -30,12 +30,10 @@ public class Like
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@OneToOne
-	private Post post;
+	
+	private int postId;
 	
 	private String action;
-	
-	private String type;
 	
 	private int userId;
 }

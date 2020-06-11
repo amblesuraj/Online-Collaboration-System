@@ -4,6 +4,7 @@
 package com.ngu.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.ngu.Model.Like;
 
@@ -18,5 +19,13 @@ public interface LikeService
 	
 	public void removePostLike(Like like);
 	
-	List<Like> findByUserIdAndPost(int UserId,int PostId);
+	public void removeLike(int likeid);
+	
+	Optional<Like> findByUserId(int UserId);
+	
+	long countByPostIdAndaction(int PostId,String action);
+
+	public List<Like> getLikes();
+	
+	Like findByPostIdAndUserId(int postId,int userId);
 }

@@ -6,10 +6,13 @@ package com.ngu.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,9 +28,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ngu.Enum.PostStatus;
+import com.ngu.Model.Like;
 import com.ngu.Model.Post;
+import com.ngu.Model.User;
 import com.ngu.Service.FileStorageService;
+import com.ngu.Service.LikeService;
 import com.ngu.Service.PostService;
+import com.ngu.Service.UserService;
 
 /**
  * @author SURAJ
@@ -43,6 +50,12 @@ public class PostController {
 	@Autowired
 	private FileStorageService fileStorageService;
 	
+	@Autowired
+	private LikeService likeService;
+	
+	
+	@Autowired
+	private UserService userService;
 	@GetMapping
 	public String postPage(Model model) {
 		model.addAttribute("post", new Post());
@@ -51,12 +64,12 @@ public class PostController {
 	
 	
 
-	@RequestMapping("/allPosts")
-	public String MyPost(Model model) {
-		
-		model.addAttribute("allPosts", postService.findAllPosts());
-		return "post/AllPosts";
-	}
+//	@RequestMapping("/allPosts")
+//	public String MyPost(Model model) {
+//		
+//		model.addAttribute("allPosts", postService.findAllPosts());
+//		return "post/AllPosts";
+//	}
 		
 	@RequestMapping(value = "/save-post", method = RequestMethod.POST)
 	public String EmployeeCreate(@ModelAttribute @Valid Post post,BindingResult result, @RequestParam(required = true, value = "postImages") MultipartFile[] files,Model model,RedirectAttributes redirectAttributes )
@@ -69,6 +82,7 @@ public class PostController {
 			StringBuilder fileNames  = new StringBuilder();
 			List<String> downloadUris = new ArrayList<>();
 			
+			
 				for(MultipartFile file :files)
 				{
 					String fileName = fileStorageService.storeFile(file);
@@ -79,10 +93,14 @@ public class PostController {
 					downloadUris.add(fileDownloadUri);
 					
 					post.setPostImages(downloadUris);
-					
-
 
 				}
+				Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+				User user = userService.findByUsername(authentication.getName());
+				
+				
+				post.setUser(user);
+				
 				post.setStatus(PostStatus.PRIVATE);
 				postService.createPost(post);
 			
@@ -93,7 +111,7 @@ public class PostController {
 			System.out.println(e);
 		}
 		
-		return "redirect:/";
+		return "redirect:/post";
 	}
 	
 	@RequestMapping(value = "/delete/{id}")
@@ -103,5 +121,25 @@ public class PostController {
 		
 		return "redirect:/post?Deleted"+id;
 	}
+	
+	@RequestMapping(value = "/{id}")
+	public String getUsersPosts(@PathVariable int id,Model model)
+	{
+		
+		Optional<User> user = userService.findById(id);
+		if(user.isPresent()) {
+		
+			User existsUser = user.get();
+			
+			model.addAttribute("user", existsUser.getId());
+			List<Post> posts = postService.findAllPostsOrderByDesc();
+			model.addAttribute("posts", posts);
+		}
+		
+		return "post/AllPosts";
+		
+	}
+	
+	
 	
 }

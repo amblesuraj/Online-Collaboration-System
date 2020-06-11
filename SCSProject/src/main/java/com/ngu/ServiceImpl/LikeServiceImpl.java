@@ -4,6 +4,7 @@
 package com.ngu.ServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -39,11 +40,36 @@ public class LikeServiceImpl implements LikeService
 		likeRepository.delete(like);
 	}
 
+	
+
 	@Override
-	public List<Like> findByUserIdAndPost(int UserId,int PostId)
-	{
+	public long countByPostIdAndaction(int PostId,String action) {
 		// TODO Auto-generated method stub
-		return findByUserIdAndPost(UserId,PostId);
+		return likeRepository.countByPostIdAndAction(PostId,action);
+	}
+
+	@Override
+	public Optional<Like> findByUserId(int UserId) {
+		// TODO Auto-generated method stub
+		return likeRepository.findById(UserId);
+	}
+
+	@Override
+	public List<Like> getLikes() {
+		// TODO Auto-generated method stub
+		return likeRepository.findAll();
+	}
+
+	@Override
+	public Like findByPostIdAndUserId(int postId, int userId) {
+		// TODO Auto-generated method stub
+		return likeRepository.findByPostIdAndUserId(postId, userId);
+	}
+
+	@Override
+	public void removeLike(int likeid) {
+		// TODO Auto-generated method stub
+		likeRepository.deleteById(likeid);
 	}
 
 }
