@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.ngu.Enum.NotificationStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -30,10 +32,11 @@ public class Like
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	
-	private int postId;
+	@OneToOne
+	private Post post;
 	
 	private String action;
+	
 	
 	private int userId;
 }

@@ -26,4 +26,6 @@ public interface BlogService
 	 void DeleteBlogById(int id);
 
 	List<Blog> findAllBlogsOrderByDesc();
+	
+	public long count();
 }

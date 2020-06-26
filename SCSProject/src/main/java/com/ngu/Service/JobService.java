@@ -23,4 +23,6 @@ public interface JobService
 	public void deleteJob(int id);
 
 	public List<Job> findAllJobsOrderByDesc();
+	
+	public long count();
 }

@@ -38,100 +38,75 @@
 						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
 							class="collapsible-body"
 							th:class="${isDashboard} ? 'active' : '' " th:href="@{/admin}"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Modern</span></a>
+							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>User List</span></a>
 
 						</li>
-						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
-							class="collapsible-body"
-							th:class="${isDashboardecommerce} ? 'active' : '' "
-							th:href="@{/admin/dashboard-ecommerce}" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>eCommerce</span></a>
-						</li>
-						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
-							class="collapsible-body"
-							th:class="${isDashboardanalytics} ? 'active' : ''"
-							th:href="@{/admin/dashboard-analytics}" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Analytics</span></a>
-						</li>
+						
 						<!-- USER DASHBOARD -->
 					
 					</ul>
 				</div></li>
+				
+				
+				
+				
+				
 			</th:block>	
 
-			<li class="navigation-header" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a class="navigation-header-text">Applications</a><i
+			<li class="navigation-header" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a class="navigation-header-text">Users Catalog</a><i
 				class="navigation-header-icon material-icons">more_horiz</i></li>
 				
 				<li class="navigation-header" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="navigation-header-text">Applications</a><i
 				class="navigation-header-icon material-icons">more_horiz</i></li>
 				
-			<li class="bold"><a class="waves-effect waves-cyan "
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
 				th:href="@{'/post/'+${userModel.id}}"><i class="material-icons">check</i><span
 					class="menu-title" data-i18n="">My Posts</span></a>
 			</li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				th:class="${isAppChat} ? 'active' : '' " href="/admin/app-chat"><i
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:class="${isAppChat} ? 'active' : '' " th:href="@{'/blog/'+${userModel.id}}"><i
 					class="material-icons">check</i><span
 					class="menu-title" data-i18n="">My Blogs</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/app-todo"><i class="material-icons">check</i><span
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:href="@{'/forum/'+${userModel.id}}"><i class="material-icons">check</i><span
 					class="menu-title" data-i18n="">My Forums</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/app-contacts"><i class="material-icons">check</i><span
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:href="@{'/job/'+${userModel.id}}"><i class="material-icons">check</i><span
 					class="menu-title" data-i18n="">My Jobs</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/app-calendar"><i class="material-icons">today</i><span
-					class="menu-title" data-i18n="">Calendar</span></a></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">add_shopping_cart</i><span
-					class="menu-title" data-i18n="">eCommerce</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body"
-							href="/admin/eCommerce-products-page" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Products
-									Page</span></a></li>
-						<li><a class="collapsible-body"
-							href="/admin/eCommerce-pricing" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Pricing</span></a>
+			
+			
+			<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllPosts} ? 'active' : '' " th:href="@{/admin/allPosts}"
+							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>User Posts</span></a>
+
 						</li>
-						<li><a class="collapsible-body"
-							href="/admin/eCommerce-invoice" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Invoice</span></a>
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllBlogs} ? 'active' : '' "
+							th:href="@{/admin/allBlogs}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Blogs</span></a>
 						</li>
-					</ul>
-				</div></li>
-			<li class="navigation-header"><a class="navigation-header-text">Pages
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllForums} ? 'active' : ''"
+							th:href="@{/admin/allForums}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Forums</span></a>
+						</li>
+						
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllJobs} ? 'active' : ''"
+							th:href="@{/admin/allJobs}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Jobs</span></a>
+						</li>
+			
+					
+<th:block sec:authorize="hasAnyAuthority('USER','EMPLOYEE') or !isAuthenticated()">					
+
+			<li class="navigation-header"><a class="navigation-header-text">Personal
 			</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">content_paste</i><span class="menu-title"
-					data-i18n="">Pages</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/page-contact"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/page-blog-list"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Blog</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/page-search"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Search</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/page-knowledge"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Knowledge</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/page-faq"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>FAQs</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/page-blank"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Page
-									Blank</span></a></li>
-					</ul>
-				</div></li>
+
 			<li class="bold"><a
 				class="collapsible-header waves-effect waves-cyan " href="#"><i
 					class="material-icons">crop_original</i><span class="menu-title"
@@ -141,352 +116,38 @@
 						data-collapsible="accordion">
 						<li><a class="collapsible-body"
 							href="/admin/media-gallery-page" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Gallery
-									Page</span></a></li>
+								class="material-icons">radio_button_unchecked</i><span>My Gallery
+									</span></a></li>
 						<li><a class="collapsible-body"
 							href="/admin/media-hover-effects" data-i18n=""><i
 								class="material-icons">radio_button_unchecked</i><span>Media
 									Hover Effects</span></a></li>
 					</ul>
 				</div></li>
+			
 			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">face</i><span class="menu-title"
-					data-i18n="">User</span><span
-					class="badge badge pill purple float-right mr-10">10</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body"
-							href="/admin/user-profile-page" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>User
-									Profile</span></a></li>
-						<li><a class="collapsible-body" href="/admin/user-login"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Login</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/user-register"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Register</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/user-forgot-password" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Forgot
-									Password</span></a></li>
-						<li><a class="collapsible-body"
-							href="/admin/user-lock-screen" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Lock
-									Screen</span></a></li>
-					</ul>
-				</div></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
+				class="waves-effect waves-cyan" th:href="@{'/user/profile' + ${userModel.id}}"><i
+					class="material-icons">face</i><span
+					class="menu-title" data-i18n="">User Profile</span></a>
+				</li>
+				<li class="bold"><a
+				class="waves-effect waves-cyan" href="#"><i
 					class="material-icons">filter_tilt_shift</i><span
 					class="menu-title" data-i18n="">Misc</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/page-404"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>404</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/page-maintenance" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Page
-									Maintenanace</span></a></li>
-						<li><a class="collapsible-body" href="/admin/page-500"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>500</span></a>
-						</li>
-					</ul>
-				</div></li>
-			<li class="navigation-header"><a class="navigation-header-text">User
-					Interface </a><i class="navigation-header-icon material-icons">more_horiz</i>
+				</li>
+				
+				
+			<li class="navigation-header"><a class="navigation-header-text">Friends </a><i class="navigation-header-icon material-icons">more_horiz</i>
 			</li>
+			
 			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">cast</i><span class="menu-title"
-					data-i18n="">Cards</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/cards-basic"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Cards</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/cards-advance"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Cards
-									Advance</span></a></li>
-						<li><a class="collapsible-body" href="/admin/cards-extended"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Cards
-									Extended</span></a></li>
-					</ul>
-				</div></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">invert_colors</i><span class="menu-title"
-					data-i18n="">CSS</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/css-typography"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Typograpy</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-color"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Color</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-grid"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Grid</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-helpers"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Helpers</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-media"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Media</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-pulse"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Pulse</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-sass"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Sass</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-shadow"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Shadow</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-animations"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Animations</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/css-transitions"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Transitions</span></a>
-						</li>
-					</ul>
-				</div></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">photo_filter</i><span class="menu-title"
-					data-i18n="">Basic UI</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a
-							class="collapsible-body collapsible-header waves-effect waves-cyan"
-							href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Buttons</span></a>
-							<div class="collapsible-body">
-								<ul class="collapsible" data-collapsible="accordion">
-									<li><a class="collapsible-body"
-										href="/admin/ui-basic-buttons" data-i18n=""><i
-											class="material-icons">radio_button_unchecked</i><span>Basic</span></a>
-									</li>
-									<li><a class="collapsible-body"
-										href="/admin/ui-extended-buttons" data-i18n=""><i
-											class="material-icons">radio_button_unchecked</i><span>Extended</span></a>
-									</li>
-								</ul>
-							</div></li>
-						<li><a class="collapsible-body" href="/admin/ui-icons"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Icons</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-alerts"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Alerts</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-badges"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Badges</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-breadcrumbs"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Breadcrumbs</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-chips"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Chips</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-collections"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Collections</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-navbar"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Navbar</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-pagination"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Pagination</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/ui-preloader"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Preloader</span></a>
-						</li>
-					</ul>
-				</div></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">settings_brightness</i><span
-					class="menu-title" data-i18n="">Advanced UI</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-carousel" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Carousel</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-collapsibles" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Collapsibles</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-toasts" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Toasts</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-tooltip" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Tooltip</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-dropdown" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Dropdown</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-feature-discovery" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Discovery</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-media" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Media</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-modals" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Modals</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-scrollspy" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Scrollspy</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/advance-ui-tabs"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Tabs</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/advance-ui-waves" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Waves</span></a>
-						</li>
-					</ul>
-				</div></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">add_to_queue</i><span class="menu-title"
-					data-i18n="">Extra Components</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body"
-							href="/admin/extra-components-range-slider" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Range
-									Slider</span></a></li>
-						<li><a class="collapsible-body"
-							href="/admin/extra-components-sweetalert" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Sweetalert</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/extra-components-nestable" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Nestable</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/extra-components-translation" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Translation</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/extra-components-highlight" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Highlight</span></a>
-						</li>
-					</ul>
-				</div></li>
-			<li class="navigation-header"><a class="navigation-header-text">Tables
-					&amp; Forms </a><i class="navigation-header-icon material-icons">more_horiz</i>
-			</li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/table-basic"><i class="material-icons">border_all</i><span
-					class="menu-title" data-i18n="">Basic Tables</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/table-data-table"><i class="material-icons">grid_on</i><span
-					class="menu-title" data-i18n="">Data Tables</span></a></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">chrome_reader_mode</i><span
-					class="menu-title" data-i18n="">Forms</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/form-elements"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Form
-									Elements</span></a></li>
-						<li><a class="collapsible-body" href="/admin/form-validation"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Form
-									Validation</span></a></li>
-						<li><a class="collapsible-body" href="/admin/form-masks"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Form
-									Masks</span></a></li>
-						<li><a class="collapsible-body"
-							href="/admin/form-file-uploads" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>File
-									Uploads</span></a></li>
-					</ul>
-				</div></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/form-layouts"><i class="material-icons">image_aspect_ratio</i><span
-					class="menu-title" data-i18n="">Form Layouts</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="/admin/form-wizard"><i class="material-icons">settings_ethernet</i><span
-					class="menu-title" data-i18n="">Form Wizard</span></a></li>
-			<li class="navigation-header"><a class="navigation-header-text">Charts
-					&amp; Maps </a><i class="navigation-header-icon material-icons">more_horiz</i>
-			</li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">pie_chart_outlined</i><span
-					class="menu-title" data-i18n="">Chart</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="/admin/charts-chartjs"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>ChartJS</span></a>
-						</li>
-						<li><a class="collapsible-body" href="/admin/charts-chartist"
-							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Chartist</span></a>
-						</li>
-						<li><a class="collapsible-body"
-							href="/admin/charts-sparklines" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Sparkline
-									Charts</span></a></li>
-					</ul>
-				</div></li>
-			<li class="navigation-header"><a class="navigation-header-text">Misc
-			</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
-			<li class="bold"><a
-				class="collapsible-header waves-effect waves-cyan " href="#"><i
-					class="material-icons">photo_filter</i><span class="menu-title"
-					data-i18n="">Menu levels</span></a>
-				<div class="collapsible-body">
-					<ul class="collapsible collapsible-sub"
-						data-collapsible="accordion">
-						<li><a class="collapsible-body" href="#" data-i18n=""><i
-								class="material-icons">radio_button_unchecked</i><span>Second
-									level</span></a></li>
-						<li><a
-							class="collapsible-body collapsible-header waves-effect waves-cyan"
-							href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Second
-									level child</span></a>
-							<div class="collapsible-body">
-								<ul class="collapsible" data-collapsible="accordion">
-									<li><a class="collapsible-body" href="#" data-i18n=""><i
-											class="material-icons">radio_button_unchecked</i><span>Third
-												level</span></a></li>
-								</ul>
-							</div></li>
-					</ul>
-				</div></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="changelog"><i class="material-icons">track_changes</i><span
-					class="menu-title" data-i18n="">Changelog</span><span
-					class="badge badge pill light-blue float-right mr-10">5.1</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="https://pixinvent.com/materialize-material-design-admin-template/documentation/index.html"><i
-					class="material-icons">import_contacts</i><span class="menu-title"
-					data-i18n="">Documentation</span></a></li>
-			<li class="bold"><a class="waves-effect waves-cyan "
-				href="https://pixinvent.ticksy.com/"><i class="material-icons">help_outline</i><span
-					class="menu-title" data-i18n="">Support</span></a></li>
-		</ul>
-		<div class="navigation-background"></div>
-		<a
-			class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
-			href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+				class="waves-effect waves-cyan" href="#"><i
+					class="material-icons">group</i><span
+					class="menu-title" data-i18n="">Friend List</span></a>
+				</li>
+</th:block>			
+			</ul>
+
+
 	</aside>
 </th:block>

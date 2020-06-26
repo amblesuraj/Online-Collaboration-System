@@ -62,4 +62,10 @@ public class BlogServiceImpl implements BlogService
 		return blogRepository.findAllByOrderByIdDesc();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return blogRepository.count();
+	}
+
 }

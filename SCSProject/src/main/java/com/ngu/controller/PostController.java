@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ngu.Enum.PostStatus;
+import com.ngu.Model.Blog;
 import com.ngu.Model.Like;
 import com.ngu.Model.Post;
 import com.ngu.Model.User;
@@ -114,6 +115,19 @@ public class PostController {
 		return "redirect:/post";
 	}
 	
+	@RequestMapping(value = "/single/{postid}")
+	public String getSinglePost(@PathVariable int postid,Model model) {
+		
+		Post post =  postService.getPostById(postid);
+		
+		if(post != null)
+		{
+			model.addAttribute("post", post);
+		}
+		
+		return "post/singlePost";
+	}
+	
 	@RequestMapping(value = "/delete/{id}")
 	public String DeletePost(@PathVariable int id)
 	{
@@ -133,10 +147,16 @@ public class PostController {
 			
 			model.addAttribute("user", existsUser.getId());
 			List<Post> posts = postService.findAllPostsOrderByDesc();
+			
+			if(posts.isEmpty()) {
+			
+				model.addAttribute("msg", "Posts Data Not Found");
+			}
+			
 			model.addAttribute("posts", posts);
 		}
 		
-		return "post/AllPosts";
+		return "post/myPosts";
 		
 	}
 	

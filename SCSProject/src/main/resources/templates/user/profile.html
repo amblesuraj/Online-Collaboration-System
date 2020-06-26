@@ -48,8 +48,19 @@
 <!-- Login,Register ,forgot password,reset password css -->
 <!-- CUSTOM CSS -->
 <link rel="stylesheet" type="text/css"
+	href="../static/app-assets/css/pages/dashboard-modern.css"
+	th:href="@{/app-assets/css/pages/dashboard-modern.css}" />
+	<link rel="stylesheet" th:href="@{/app-assets/css/pages/myStyle.css}" />
+<!-- INTRO CSS -->
+<!-- Login,Register ,forgot password,reset password css -->
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" type="text/css"
 	href="../static/app-assets/css/custom/custom.css"
 	th:href="@{/app-assets/css/custom/custom.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/app-assets/prism/prism.css"
+	th:href="@{/app-assets/prism/prism.css}" />
+	
 	<style type="text/css">
 	img {
 		max-width: 100%;
@@ -91,26 +102,7 @@
 									<li class="breadcrumb-item active">User Profile Page</li>
 								</ol>
 							</div>
-							<div class="col s2 m6 l6">
-								<a
-									class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right"
-									href="#!" data-target="dropdown1"><i
-									class="material-icons hide-on-med-and-up">settings</i><span
-									class="hide-on-small-onl">Settings</span><i
-									class="material-icons right">arrow_drop_down</i></a>
-								<ul class="dropdown-content" id="dropdown1" tabindex="0">
-									<li tabindex="0"><a class="grey-text text-darken-2"
-										href="user-profile-page.html">Profile<span
-											class="new badge red">2</span></a></li>
-									<li tabindex="0"><a class="grey-text text-darken-2"
-										href="app-contacts.html">Contacts</a></li>
-									<li tabindex="0"><a class="grey-text text-darken-2"
-										href="page-faq.html">FAQ</a></li>
-									<li class="divider" tabindex="-1"></li>
-									<li tabindex="0"><a class="grey-text text-darken-2"
-										th:href="@{/logout}">Logout</a></li>
-								</ul>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -140,7 +132,6 @@
 										<div class="col s12 center-align">
 									<form id="profilePictureForm">
 											<img class="responsive-img circle z-depth-5 tooltipped" id="profileImage" name="profileImage"  width="200"
-												src="../static/app-assets/images/user/12.jpg"
 												data-position="bottom" data-tooltip="Click to Change Profile Picture"
 												th:src="${(user.profilePicture == null && #strings.isEmpty(user.profilePicture)) }  ? @{/app-assets/images/user/12.jpg} : ${user.profilePicture}" alt="Profile Picture" />
 													<input
@@ -156,257 +147,18 @@
 										<div class="col s6">
 											<h6>Follower</h6>
 											<h5 class="m-0">
-												<a href="#">540</a>
+												<a href="#">0</a>
 											</h5>
 										</div>
 										<div class="col s6">
 											<h6>Following</h6>
 											<h5 class="m-0">
-												<a href="#">128</a>
+												<a href="#">0</a>
 											</h5>
 										</div>
 									</div>
 									<hr>
-									<div class="row">
-										<div class="col s12">
-											<p class="m-0">Performance</p>
-											<p class="m-0">
-												<a href="#">56</a> and <a href="#">42</a> reviews
-											</p>
-										</div>
-									</div>
-									<hr>
-									<div class="row user-projects">
-										<h6 class="col s12">Projects</h6>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/35.png"
-												th:src="@{/app-assets/images/gallery/35.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/36.png"
-												th:src="@{/app-assets/images/gallery/36.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/37.png"
-												th:src="@{/app-assets/images/gallery/37.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/38.png"
-												th:src="@{/app-assets/images/gallery/38.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/39.png"
-												th:src="@{/app-assets/images/gallery/39.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/40.png"
-												th:src="@{/app-assets/images/gallery/40.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/41.png"
-												th:src="@{/app-assets/images/gallery/41.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/42.png"
-												th:src="@{/app-assets/images/gallery/42.png}" />
-										</div>
-										<div class="col s4">
-											<img class="responsive-img photo-border mt-10" alt=""
-												src="../../../app-assets/images/gallery/43.png"
-												th:src="@{/app-assets/images/gallery/43.png}" />
-										</div>
-									</div>
-									<hr class="mt-5">
-									<div class="row">
-										<div class="col s12">
-											<h6>Boosts</h6>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/1.jpg"
-												th:src="@{/app-assets/images/user/1.jpg}" alt=""></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Micheal S. Castilleja</p>
-											</a>
-											<p class="m-0 amber-text">
-												<span class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span>
-											</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/11.jpg"
-												th:src="@{/app-assets/images/user/11.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Thomas A. Carranza</p>
-											</a>
-											<p class="m-0 amber-text">
-												<span class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span>
-											</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/5.jpg"
-												th:src="@{/app-assets/images/user/5.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Micheal Bryant</p>
-											</a>
-											<p class="m-0 amber-text">
-												<span class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span>
-											</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle pb-2">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/8.jpg"
-												th:src="@{/app-assets/images/user/8.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Wiley J. Bryant</p>
-											</a>
-											<p class="m-0 amber-text">
-												<span class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span> <span
-													class="material-icons star-width">star_rate</span>
-											</p>
-										</div>
-									</div>
-
-
-									<div class="row mt-5">
-										<div class="col s12">
-											<h6>Today Highlight</h6>
-											<img class="responsive-img card-border z-depth-2 mt-2"
-												src="../../../app-assets/images/gallery/post-3.png"
-												th:src="@{/app-assets/images/gallery/post-3.png}" alt="" />
-											<p>
-												<a href="#">Meeting with clients</a>
-											</p>
-											<p>Crediting isn’t required, but is appreciated and
-												allows photographers to gain exposure. Copy the text below
-												or embed a credit badge</p>
-										</div>
-									</div>
-									<hr class="mt-5">
-									<div class="row">
-										<div class="col s12">
-											<h6>Who to follow</h6>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/2.jpg"
-												th:src="@{/app-assets/images/user/2.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Frank Goodman</p>
-											</a>
-											<p class="m-0 grey-text lighten-3">Senior architect</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/7.jpg"
-												th:src="@{/app-assets/images/user/7.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Luiza Ales</p>
-											</a>
-											<p class="m-0 grey-text lighten-3">Senior Developer</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/4.jpg"
-												th:src="@{/app-assets/images/user/4.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Robbin Drummo</p>
-											</a>
-											<p class="m-0 grey-text lighten-3">Graphic Designer</p>
-										</div>
-									</div>
-									<div class="row mt-2">
-										<div class="col s2 mt-2 pr-0 circle">
-											<a href="#"><img class="responsive-img circle"
-												src="../../../app-assets/images/user/8.jpg"
-												th:src="@{/app-assets/images/user/8.jpg}" alt="" /></a>
-										</div>
-										<div class="col s9">
-											<a href="#">
-												<p class="m-0">Myles Steven</p>
-											</a>
-											<p class="m-0 grey-text lighten-3">Senior Developer</p>
-										</div>
-									</div>
-									<hr class="mt-5">
-									<div class="row">
-										<div class="col s12">
-											<h6>Latest Updates</h6>
-											<p class="latest-update">
-												Make Metronic<span class="right"> <a href="#">+480</a>
-												</span>
-											</p>
-											<p class="latest-update">
-												Programming Language <span class="right"> <a href="#">+12</a>
-												</span>
-											</p>
-											<p class="latest-update">
-												Project completed <span class="right"> <a href="#">+570</a>
-												</span>
-											</p>
-											<p class="latest-update">
-												New Customer <span class="right"><a href="#">+120</a>
-												</span>
-											</p>
-											<p class="latest-update">
-												Annual Companies<span class="right"> <a href="#">+890</a>
-												</span>
-											</p>
-										</div>
-									</div>
-
+									
 
 
 								</div>
@@ -419,18 +171,7 @@
 												<div class="row">
 													<div class="col s12">
 														<h5>[[${userModel.fullName}]]</h5>
-														<p>
-															Senior Designer <span class="amber-text"><span
-																class="material-icons star-width vertical-align-middle">star_rate</span>
-																<span
-																class="material-icons star-width vertical-align-middle">star_rate</span>
-																<span
-																class="material-icons star-width vertical-align-middle">star_rate</span>
-																<span
-																class="material-icons star-width vertical-align-middle">star_rate</span>
-																<span
-																class="material-icons star-width vertical-align-middle">star_rate</span></span>
-														</p>
+														
 													</div>
 												</div>
 												<div class="row">
@@ -443,16 +184,9 @@
 															</a></li>
 															<li class="tab col m3 s6 p-0"><a href="#test2">
 																	<i class="material-icons vertical-align-middle">bookmark_border</i>
-																	Feed
+																	Posts
 															</a></li>
-															<li class="tab col m3 s6 p-0"><a href="#test3">
-																	<i class="material-icons vertical-align-middle">date_range</i>
-																	Agenda
-															</a></li>
-															<li class="tab col m3 s6 p-0"><a href="#test4">
-																	<i class="material-icons vertical-align-middle">attach_file</i>
-																	Resume
-															</a></li>
+															
 														</ul>
 													</div>
 												</div>
@@ -462,15 +196,6 @@
 												<!--Test 2-->
 
 												<th:block th:replace="user/info/post :: post"></th:block>
-
-
-												<!--Test 3 -->
-												<th:block th:replace="user/info/forum :: forum"></th:block>
-
-
-												<!--Test 4 -->
-												<th:block th:replace="user/info/jobs :: jobs"></th:block>
-
 
 											</div>
 											<!-- Today Highlight -->
@@ -509,6 +234,17 @@
 			type="text/javascript"></script>
 		<script src="../static/app-assets/js/scripts/form-file-uploads.js"
 			th:src="@{/app-assets/js/scripts/form-file-uploads.js}"></script>
+			
+			
+			<script src="../static/app-assets/js/scripts/livestamp.min.js"
+			th:src="@{/app-assets/js/scripts/moment.js}" type="text/javascript"></script>
+
+		<script src="../static/app-assets/js/scripts/livestamp.min.js"
+			th:src="@{/app-assets/js/scripts/livestamp.min.js}"
+			type="text/javascript"></script>
+			
+			<script src="../static/app-assets/prism/prism.js"
+			th:src="@{/app-assets/prism/prism.js}" type="text/javascript"></script>
 		
 		<script src="../static/app-assets/js/scripts/form-validation.js"
 			th:src="@{/app-assets/js/scripts/form-validation.js}"></script>

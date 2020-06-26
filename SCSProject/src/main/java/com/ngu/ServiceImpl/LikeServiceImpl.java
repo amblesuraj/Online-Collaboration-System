@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ngu.Enum.NotificationStatus;
 import com.ngu.Model.Like;
 import com.ngu.Repositories.LikeRepository;
 import com.ngu.Service.LikeService;
@@ -70,6 +71,12 @@ public class LikeServiceImpl implements LikeService
 	public void removeLike(int likeid) {
 		// TODO Auto-generated method stub
 		likeRepository.deleteById(likeid);
+	}
+
+	@Override
+	public List<Like> findByUserIdAndAction(int userId, NotificationStatus action) {
+		// TODO Auto-generated method stub
+		return likeRepository.findByUserIdAndAction(userId, action);
 	}
 
 }

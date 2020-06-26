@@ -65,18 +65,24 @@
 		
 			<h1 class="text-dark font-weight-bold text-center">Add Blog</h1>
 			<div class="mb-3 text-center">
-				<button type="button" class="btn btn-go-back font-weight-bold"
-					onclick="history.back()">Go Back</button>
-				<a href="/post/allPosts" class="btn btn-all-post font-weight-bold">All
-					Posts</a>
+				<a href="/" class="btn btn-go-back font-weight-bold">Home</a>	
+				<a th:href="@{'/blog/'+${userModel.id}}" class="btn btn-all-post font-weight-bold">My Blogs</a>
 			</div>
-			<form th:action="@{/post/save-blog}" th:object="${blog}" method="post" enctype="multipart/form-data">
+			<form th:action="@{/blog/save-blog}" th:object="${blog}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="" class="text-dark font-weight-bold">Post Title</label>
+					<label for="" class="text-dark font-weight-bold">Blog Title</label>
 					<input type="text" class="form-control" name="blogtitle"
 						id="blogtitle" aria-describedby="helpId" placeholder="">
 						<p th:if="${#fields.hasErrors('blogtitle')}" th:field="*{blogtitle}"
 						th:errors="*{blogtitle}" class="text-danger">Incorrect</p>
+						
+				</div>
+				<div class="form-group">
+					<label for="" class="text-dark font-weight-bold">Blog Description</label>
+					<textarea class="form-control" name="" th:field="*{description}" id="description" rows="3"></textarea>
+						<p th:if="${#fields.hasErrors('description')}" th:field="*{description}"
+						th:errors="*{description}" class="text-danger">Incorrect</p>
+						
 				</div>
 				<div class="form-group">
 					<label for="" class="text-dark font-weight-bold">Featured
@@ -115,7 +121,7 @@
 						function() {
 							tinymce
 									.init({
-										selector : 'textarea',
+										selector : '#content',
 										plugins : 'print preview fullpage paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable charmap quickbars emoticons',
 										imagetools_cors_hosts : [ 'picsum.photos' ],
 										menubar : 'file edit view insert format tools table help',

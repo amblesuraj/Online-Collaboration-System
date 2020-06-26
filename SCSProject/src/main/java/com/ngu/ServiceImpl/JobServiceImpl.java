@@ -61,4 +61,10 @@ public class JobServiceImpl implements JobService
 		return jobRepository.findAllByOrderByIdDesc();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return jobRepository.count();
+	}
+
 }

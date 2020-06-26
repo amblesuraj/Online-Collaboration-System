@@ -84,6 +84,20 @@ public class PostServiceImpl implements PostService{
 		return postRepository.findAllByOrderByIdDesc();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return postRepository.count();
+	}
+
+	@Override
+	public List<Post> findTop4ByOrderByIdDesc() {
+		// TODO Auto-generated method stub
+		return postRepository.findTop4ByOrderByIdDesc();
+	}
+
+	
+
 	
 
 }

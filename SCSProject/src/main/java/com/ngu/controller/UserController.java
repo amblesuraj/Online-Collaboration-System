@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ngu.Model.User;
 import com.ngu.Model.UserModel;
 import com.ngu.Service.EmailService;
+import com.ngu.Service.PostService;
 import com.ngu.Service.UserService;
 
 @Controller
@@ -36,6 +37,9 @@ public class UserController {
 
 	@Autowired
 	EmailService emailService;
+	
+	@Autowired
+	PostService postService;
 	
 	@Autowired
 	HttpSession session;
@@ -60,7 +64,7 @@ public class UserController {
 		{	
 			User user = optional.get();
 			model.addAttribute("user", user);
-	
+			model.addAttribute("posts", postService.findTop4ByOrderByIdDesc());
 		}
 
 		

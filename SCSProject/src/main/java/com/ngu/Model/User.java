@@ -3,6 +3,7 @@ package com.ngu.Model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -25,13 +27,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @JsonIdentityInfo(
@@ -39,10 +41,10 @@ import lombok.NoArgsConstructor;
         property = "id")
 @JsonInclude(JsonInclude.Include.NON_NULL)	
 @JsonIgnoreProperties(value = "profilePicture")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS,value = "request")
 @Table(name = "user")
 public class User implements Serializable{
@@ -99,14 +101,9 @@ public class User implements Serializable{
 
     private String resetToken;
     
-    
-    
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
     private Profile profile;
     
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
-    private Post post;
-    
-    
+   
 
 }

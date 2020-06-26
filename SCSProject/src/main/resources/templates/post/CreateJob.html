@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Create Blog Post</title>
+<title>Create Job Description</title>
 <!-- Required meta tags -->
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -63,31 +63,21 @@
 				</div>
 				
 		
-			<h1 class="text-dark font-weight-bold text-center">Add Post</h1>
+			<h1 class="text-dark font-weight-bold text-center">Add Job Description</h1>
 			<div class="mb-3 text-center">
-				<button type="button" class="btn btn-go-back font-weight-bold"
-					onclick="history.back()">Go Back</button>
-				<a href="/post/allPosts" class="btn btn-all-post font-weight-bold">All
-					Posts</a>
+	
+				<a href="/" class="btn btn-go-back font-weight-bold">Home</a>	
+				<a th:href="@{'/job/'+${userModel.id}}" class="btn btn-all-post font-weight-bold">My Jobs</a>
 			</div>
-			<form th:action="@{/post/save-post}" th:object="${post}" method="post" enctype="multipart/form-data">
+			<form th:action="@{/job/save-job}" th:object="${job}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="" class="text-dark font-weight-bold">Post Title</label>
-					<input type="text" class="form-control" name="posttitle"
-						id="posttitle" aria-describedby="helpId" placeholder="">
-						<p th:if="${#fields.hasErrors('posttitle')}" th:field="*{posttitle}"
-						th:errors="*{posttitle}" class="text-danger">Incorrect</p>
+					<label for="" class="text-dark font-weight-bold">Job Title</label>
+					<input type="text" class="form-control" name="title"
+						id="title" aria-describedby="helpId" placeholder="">
+						<p th:if="${#fields.hasErrors('title')}" th:field="*{title}"
+						th:errors="*{title}" class="text-danger">Incorrect</p>
 				</div>
-				<div class="form-group">
-					<label for="" class="text-dark font-weight-bold">Featured
-						Image</label> <input type="file" class="form-control-file text-dark"
-						name="postImage" id="postImage" th:field="*{postImage}"
-						aria-describedby="fileHelpId" >
-						
-						<p th:if="${#fields.hasErrors('postImage')}"
-						th:errors="*{postImage}" class="text-danger">Incorrect</p>
-						
-				</div>
+				
 				<div class="form-group">
 					<label for="" class="text-dark font-weight-bold">Content</label>
 					<textarea class="form-control" name="" th:field="*{content}" id="content" rows="3"></textarea>

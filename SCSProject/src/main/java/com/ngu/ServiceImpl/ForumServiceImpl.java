@@ -59,4 +59,10 @@ public class ForumServiceImpl implements ForumService
 		return forumRepository.findAllByOrderByIdDesc();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return forumRepository.count();
+	}
+
 }

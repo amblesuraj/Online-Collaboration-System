@@ -31,6 +31,10 @@ public interface PostService {
 
 	public List<Post> findAllPostsOrderByDesc();
 
+	public long count();
+
+	public List<Post> findTop4ByOrderByIdDesc();
+
 	/**
 	 * @param id
 	 */

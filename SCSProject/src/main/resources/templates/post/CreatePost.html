@@ -65,10 +65,8 @@
 		
 			<h1 class="text-dark font-weight-bold text-center">Add Post</h1>
 			<div class="mb-3 text-center">
-				<button type="button" class="btn btn-go-back font-weight-bold"
-					onclick="history.back()">Go Back</button>
-				<a href="/post/allPosts" class="btn btn-all-post font-weight-bold">All
-					Posts</a>
+				<a href="/" class="btn btn-go-back font-weight-bold">Home</a>	
+				<a th:href="@{'/post/'+${userModel.id}}" class="btn btn-all-post font-weight-bold">My Posts</a>
 			</div>
 			<form th:action="@{/post/save-post}" th:object="${post}" method="post" enctype="multipart/form-data">
 				

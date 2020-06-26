@@ -21,4 +21,5 @@ public interface ForumService
 		public void deleteById(int id);
 		public List<Forum> findAllForumsOrderByDesc();
 		
+		public long count();
 }

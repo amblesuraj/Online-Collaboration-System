@@ -5,12 +5,15 @@ package com.ngu.Model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -40,6 +43,10 @@ public class Blog extends Auditor<String> {
 	private String blogtitle;
 
 	private String blogImage;
+
+	@Lob
+	@Column(columnDefinition = "TEXT")
+	private String description;
 	
 //	private List<String> blogImages;
 	
@@ -48,5 +55,8 @@ public class Blog extends Auditor<String> {
 	@NotEmpty(message = "Content should not be empty")
 	private String content;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id",referencedColumnName = "id")
+	private User user;
 	
 }

@@ -6,6 +6,7 @@ package com.ngu.Service;
 import java.util.List;
 import java.util.Optional;
 
+import com.ngu.Enum.NotificationStatus;
 import com.ngu.Model.Like;
 
 /**
@@ -28,4 +29,6 @@ public interface LikeService
 	public List<Like> getLikes();
 	
 	Like findByPostIdAndUserId(int postId,int userId);
+	
+	List<Like> findByUserIdAndAction(int userId,NotificationStatus action);
 }

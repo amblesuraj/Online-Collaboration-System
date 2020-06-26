@@ -47,6 +47,8 @@ public interface UserService extends UserDetailsService {
 	
 	
 	public User getUserFromSession();
+
+	public long count();
 	
 	
 	

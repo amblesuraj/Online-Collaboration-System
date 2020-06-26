@@ -220,6 +220,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return userRepository.count();
+	}
+
+
 //	@Override
 //	public Profile getProfileFromSession()
 //	{
