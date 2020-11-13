@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/PageLayout}">
+<!-- BEGIN: Head-->
+
+<!-- Mirrored from pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-modern-menu-template/user-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2019 05:39:24 GMT -->
+<head>
+
+<title>User Register</title>
+
+</head>
+<!-- END: Head-->
+<body
+	class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column register-bg  blank-page blank-page"
+	data-open="click" data-menu="vertical-modern-menu" data-col="1-column">
+	<div class="row" layout:fragment="content">
+		<div class="col s12">
+			<div class="container">
+				<div id="register-page" class="row">
+					<div
+						class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 register-card bg-opacity-8">
+						<form class="login-form" method="post"
+								th:action="@{/dashboard/register}" th:object="${user}"
+								id="RegisterForm">
+							<div class="row">
+								<div class="input-field col s12">
+									<h5 class="ml-4">Register</h5>
+									<p class="ml-4">Welcome to our community  !</p>
+								</div>
+							</div>
+							
+							<div class="row margin">
+								<div class="input-field col m6 l6 s12">
+									<i class="material-icons prefix pt-2">account_circle</i> 
+									<input th:field="*{fname}" id="fname" type="text"> <label for="fname"
+										class="center-align">First Name</label>
+								</div>
+								<div class="input-field col m6 l6 s12">
+									<i class="material-icons prefix pt-2">account_circle</i> 
+									<input th:field="*{lname}" id="lname" type="text"> <label for="lname"
+										class="center-align">Last Name</label>
+								</div>
+							</div>
+							
+							<div class="row margin">
+								<div class="input-field col s12">
+									<i class="material-icons prefix pt-2">person_outline</i> 
+									<input th:field="*{username}" id="username" type="text"> <label for="username"
+										class="center-align">Username</label>
+								</div>
+							</div>
+							<div class="row margin">
+								<div class="input-field col s12">
+									<i class="material-icons prefix pt-2">mail_outline</i> 
+									<input th:field="*{email}"
+										id="email" type="email"> <label for="email">Email</label>
+								</div>
+							</div>
+							<div class="row margin">
+								<div class="input-field col s12">
+									<i class="material-icons prefix pt-2">lock_outline</i> <input
+										id="password" type="password" th:field="*{password}"> <label for="password">Password</label>
+								</div>
+							</div>
+							<div class="row margin">
+								<div class="input-field col s12">
+									<i class="material-icons prefix pt-2">lock_outline</i> <input
+										id="password-again" type="password" th:field="*{confirmPassword}"> <label
+										for="password-again">Confirm Password </label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input type="submit" value="Register" class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<p class="margin medium-small">
+										<a th:href="@{/dashboard/login}">Already have an account? Login</a>
+									</p>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- Mirrored from pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-modern-menu-template/user-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2019 05:39:24 GMT -->
+</html>

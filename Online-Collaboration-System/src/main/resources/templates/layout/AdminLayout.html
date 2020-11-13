@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- BEGIN: Head-->
+<head>
+<title data-layout-title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">SCS</title>
+<th:block th:replace="fragments/style"></th:block>
+<style type="text/css">
+	 .backdrop{
+       background-color: purple;
+     }
+</style>
+</head>
+<!-- END: Head-->
+<body
+	class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  "
+	data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+
+	<!-- BEGIN: Header-->
+	<th:block th:replace="fragments/header :: header"></th:block>
+	<!-- END: Header-->
+
+
+
+	<!-- BEGIN: SideNav-->
+	<th:block th:insert="fragments/sidebar :: sidebar"></th:block>
+	<!-- END: SideNav-->
+
+	<!-- BEGIN: Page Main ALL ADMIN CONTENT-->
+	<main>
+	<div id="main">
+		<div class="row">
+			<th:block th:if="${isDashboard}">
+				<div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+			</th:block>
+			<div class="col s12">
+				<div class="container">
+
+					<th:block layout:fragment="content"></th:block>
+
+					<th:block th:replace="fragments/rightSidebar:: rightSidebar"></th:block>
+
+					<th:block th:replace="fragments/floatButton :: floatButton"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<th:block th:replace="fragments/intro:: intro"></th:block> -->
+
+
+</main>
+	<!-- END: Page Main-->
+
+		<th:block th:replace="${isFooter} ? 
+		~{fragments/footer-analytics :: footer-analytics} : 
+		~{fragments/footer:: footer}"></th:block>
+	<!-- BEGIN: Footer-->
+	
+	<!-- END: Footer-->
+	<!-- BEGIN JS FILES-->
+
+
+	<!-- END JS FILES-->
+
+	<th:block layout:fragment="script"></th:block>
+
+</body>
+
+<!-- Mirrored from pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-modern-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2019 05:36:36 GMT -->
+</html>

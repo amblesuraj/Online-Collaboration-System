@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Create Blog Post</title>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+.bg-container {
+	color: #fff;
+	/* background: linear-gradient(45deg, #303f9f, #7b1fa2); */
+	background: linear-gradient(45deg, #8e24aa, #ff6e40);
+	/* box-shadow: 3px 3px 20px 0 rgba(123, 31, 162, .5); */
+}
+
+.btn-all-post {
+	color: #fff;
+	background: #ff5252;
+	background: -webkit-linear-gradient(45deg, #ff5252, #f48fb1) !important;
+	background: -moz- oldlinear-gradient(45deg, #ff5252, #f48fb1) !important;
+	background: -o-linear-gradient(45deg, #ff5252, #f48fb1) !important;
+	background: linear-gradient(45deg, #ff5252, #f48fb1) !important;
+	box-shadow: 3px 3px 20px 0 rgba(123, 31, 162, .5);
+	border-radius: 5rem;
+}
+
+.btn-all-post:hover, .btn-go-back:hover {
+	color: #fff;
+}
+
+.btn-go-back {
+	color: #fff;
+	background: -webkit-linear-gradient(45deg, #303f9f, #7b1fa2);
+	background: -moz- oldlinear-gradient(45deg, #303f9f, #7b1fa2);
+	background: -o-linear-gradient(45deg, #303f9f, #7b1fa2);
+	background: linear-gradient(45deg, #303f9f, #7b1fa2);
+	-webkit-box-shadow: 3px 3px 20px 0 rgba(123, 31, 162, .5);
+	box-shadow: 3px 3px 20px 0 rgba(123, 31, 162, .5);
+	border-radius: 5rem;
+}
+</style>
+
+</head>
+
+<body class="bg-container ">
+
+	<div class="container mt-5 mb-5 shadow-lg p-3 mb-5 bg-light rounded">
+		<div class="offset-lg-2 col-md-12 col-12 col-lg-8 ">
+		
+				<div th:if="${msg != null}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Success ! &nbsp;<span th:text="${msg}"></span></strong>
+					</div>
+				</div>
+				
+		
+			<h1 class="text-dark font-weight-bold text-center">Add Post</h1>
+			<div class="mb-3 text-center">
+				<a href="/" class="btn btn-go-back font-weight-bold">Home</a>	
+				<a th:href="@{'/post/'+${userModel.id}}" class="btn btn-all-post font-weight-bold">My Posts</a>
+			</div>
+			<form th:action="@{/post/save-post}" th:object="${post}" method="post" enctype="multipart/form-data">
+				
+				<div class="form-group">
+					<label for="" class="text-dark font-weight-bold">Featured
+						Image</label> <input type="file" class="form-control-file text-dark"
+						name="postImages" id="postImages" th:field="*{postImages}"
+						aria-describedby="fileHelpId" multiple="multiple">
+						
+						<p th:if="${#fields.hasErrors('postImages')}"
+						th:errors="*{postImages}" class="text-danger">Incorrect</p>
+						
+				</div>
+				<div class="form-group">
+					<label for="" class="text-dark font-weight-bold">Caption</label>
+					<textarea class="form-control" name="caption" th:field="*{caption}" id="caption" rows="3"></textarea>
+					
+				</div>
+				<input type="hidden" name="userId" >
+				
+				
+				
+				<div class="text-center" >
+				<input type="submit" class="btn btn-go-back " style="width:150px" value="Publish"/>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		
+</body>
+
+</html>

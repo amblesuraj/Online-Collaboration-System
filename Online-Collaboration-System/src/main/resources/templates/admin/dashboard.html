@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/AdminLayout}">
+<head>
+
+<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/vendors.min.css" th:href="@{/app-assets/vendors/vendors.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/animate-css/animate.css" th:href="@{/app-assets/vendors/animate-css/animate.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/chartist-js/chartist.min.css" th:href="@{/app-assets/vendors/chartist-js/chartist.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/chartist-js/chartist-plugin-tooltip.css" th:href="@{/app-assets/vendors/chartist-js/chartist-plugin-tooltip.css}"/>
+    <!-- END: VENDOR CSS->
+    <!-- BEGIN: Page Level CSS-->
+   <link rel="stylesheet" type="text/css" href="../static/app-assets/css/themes/vertical-modern-menu-template/materialize.css" th:href="@{/app-assets/css/themes/vertical-modern-menu-template/materialize.css}" />
+   <link rel="stylesheet" type="text/css" href="../static/app-assets/css/themes/vertical-modern-menu-template/style.css" th:href="@{/app-assets/css/themes/vertical-modern-menu-template/style.css}"/>
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/pages/dashboard-modern.css" th:href="@{/app-assets/css/pages/dashboard-modern.css}"/>
+    <!-- INTRO CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/pages/intro.css" th:href="@{/app-assets/css/pages/intro.css}"/>
+    <!-- Login,Register ,forgot password,reset password css -->
+   <!-- CUSTOM CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/custom/custom.css" th:href="@{/app-assets/css/custom/custom.css}"/>
+    
+    <link rel="stylesheet" type="text/css"
+	th:href="@{/app-assets/vendors/data-tables/css/jquery.dataTables.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/app-assets/vendors/data-tables/css/select.dataTables.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/app-assets/css/pages/data-tables.css}">
+<style type="text/css">
+.group{
+
+text-align: center !important;
+}
+
+</style>
+
+</head>
+<body>
+
+<th:block layout:fragment="content">
+            <!-- Current balance & total transactions cards-->
+<div class="row mt-4">
+   <div class="col s12 m12 l12">
+      <!-- Current Balance -->
+      <div class="card animate fadeLeft center-align">
+         <div class="card-content">
+            <h4 class="card-title mb-0">No of Users </h4>
+<!--             <p class="medium-small">This billing cycle</p> -->
+<!--             <div class="current-balance-container"> -->
+<!--                <div id="current-balance-donut-chart" class="current-balance-shadow"></div> -->
+<!--             </div> -->
+            <h5 class="center-align">[[${usercount}]]</h5>
+<!--             <p class="medium-small center-align">Used balance this billing cycle</p> -->
+         </div>
+      </div>
+   </div>
+   
+</div>
+<div class="row">
+   
+   <div class="col s12 m12 l12">
+      <div class="card subscriber-list-card animate fadeRight">
+         <div class="card-content pb-1">
+            <h4 class="card-title mb-0 center-align">User List</h4>
+         </div>
+         <table id="data-table-row-grouping" class="display subscription-table responsive-table highlight">
+            <thead>
+               <tr>
+               	  <th>Sr.No.</th>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Active</th>
+                  
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user,itr : ${users}">
+               <tr>
+               	  <td th:text="${itr.index + 1}">
+                  <td th:text="${user.fname + ' ' +user.lname}">Michael Austin</td>
+                   <th:block th:each="role : ${user.roles}">
+                  <td>[[${role.name}]]</td>
+                  </th:block>
+                  <td th:text="${user.username}">ABC Fintech LTD.</td>
+                  <td th:text="${user.email}">Jan 1,2019</td>
+                  <td th:switch="${user.active}">
+                  	
+                  	<th:block th:case="true">
+                  	<span class="badge green lighten-5 green-text text-accent-4">Active</span>
+                  	</th:block>
+                  	<th:block th:case="false">
+                  	<span class="badge pink lighten-5 pink-text text-accent-2" >Deactivated</span>
+                  	</th:block>                  	
+                  
+                  </td>
+                  
+                  <td class="center-align"><a th:href="@{'/admin/delete/'+ ${user.id}}"><i class="material-icons pink-text">clear</i></a></td>
+               </tr>
+             </th:block>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div><!-- START RIGHT SIDEBAR NAV -->
+
+
+</th:block>
+<!-- / Intro -->
+<th:block layout:fragment="script">
+<!-- JS FILES -->
+	<script src="../static/app-assets/js/vendors.min.js" th:src="@{/app-assets/js/vendors.min.js}" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="../static/app-assets/vendors/chartjs/chart.min.js" th:src="@{/app-assets/vendors/chartjs/chart.min.js}" type="text/javascript"></script>
+    <script src="../static/app-assets/vendors/chartist-js/chartist.min.js" th:src="@{/app-assets/vendors/chartist-js/chartist.min.js}" type="text/javascript"></script>
+    <script src="../static/app-assets/vendors/chartist-js/chartist-plugin-tooltip.js" th:src="@{/app-assets/vendors/chartist-js/chartist-plugin-tooltip.js}" type="text/javascript"></script>
+    <script src="../static/app-assets/vendors/chartist-js/chartist-plugin-fill-donut.min.js" th:src="@{/app-assets/vendors/chartist-js/chartist-plugin-fill-donut.min.js}" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="../static/app-assets/js/plugins.js" th:src="@{/app-assets/js/plugins.js}" type="text/javascript"></script>
+    <script src="../static/app-assets/js/custom/custom-script.js" th:src="@{/app-assets/js/custom/custom-script.js}" type="text/javascript"></script>
+
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="../static/app-assets/js/scripts/dashboard-modern.js" th:src="@{/app-assets/js/scripts/dashboard-modern.js}" type="text/javascript"></script>
+    <script src="../static/app-assets/js/scripts/intro.js" th:src="@{/app-assets/js/scripts/intro.js}" type="text/javascript"></script>
+<!-- /JS FILES -->
+	<script
+			th:src="@{/app-assets/vendors/data-tables/js/jquery.dataTables.min.js}"
+			type="text/javascript"></script>
+		<script
+			th:src="@{/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js}"
+			type="text/javascript"></script>
+		<script
+			th:src="@{/app-assets/vendors/data-tables/js/dataTables.select.min.js}"
+			type="text/javascript"></script>
+		<script th:src="@{/app-assets/js/scripts/data-tables.js}"
+			type="text/javascript"></script>
+</th:block>
+
+</body>
+</html>

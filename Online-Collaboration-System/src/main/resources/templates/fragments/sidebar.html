@@ -1,0 +1,153 @@
+<th:block xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:fragment="sidebar">
+	<aside
+		class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square fixed">
+		<div class="brand-sidebar">
+			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('ADMIN')">
+				<a class="brand-logo darken-1" th:href="@{/admin}"><img
+					src="../static/app-assets/images/logo/materialize-logo-color.png"
+					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
+					alt="materialize logo" /><span
+					class="logo-text hide-on-med-and-down">Admin's Club</span></a><a
+					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+			</h1>
+			<h1 class="logo-wrapper" sec:authorize="hasAnyAuthority('USER','EMPLOYEE') or !isAuthenticated()">
+				<a class="brand-logo darken-1" th:href="@{/index}"><img
+					src="../static/app-assets/images/logo/materialize-logo-color.png"
+					th:src="@{/app-assets/images/logo/materialize-logo-color.png}"
+					alt="materialize logo" /><span
+					class="logo-text hide-on-med-and-down">MateClub</span></a><a
+					class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+			</h1>
+			
+		</div>
+		<ul
+			class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+			id="slide-out" data-menu="menu-navigation"
+			data-collapsible="menu-accordion">
+			<th:block sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN') ">
+			<li class="active bold"><a
+				class="collapsible-header waves-effect waves-cyan " href="#"><i
+					class="material-icons">settings_input_svideo</i><span
+					class="menu-title" data-i18n="">Dashboard</span><span
+					class="badge badge pill orange float-right mr-10">3</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub"
+						data-collapsible="accordion">
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isDashboard} ? 'active' : '' " th:href="@{/admin}"
+							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>User List</span></a>
+
+						</li>
+						
+						<!-- USER DASHBOARD -->
+					
+					</ul>
+				</div></li>
+				
+				
+				
+				
+				
+			</th:block>	
+
+			<li class="navigation-header" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a class="navigation-header-text">Users Catalog</a><i
+				class="navigation-header-icon material-icons">more_horiz</i></li>
+				
+				<li class="navigation-header" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="navigation-header-text">Applications</a><i
+				class="navigation-header-icon material-icons">more_horiz</i></li>
+				
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:href="@{'/post/'+${userModel.id}}"><i class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Posts</span></a>
+			</li>
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:class="${isAppChat} ? 'active' : '' " th:href="@{'/blog/'+${userModel.id}}"><i
+					class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Blogs</span></a></li>
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:href="@{'/forum/'+${userModel.id}}"><i class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Forums</span></a></li>
+			<li class="bold" sec:authorize="hasAnyAuthority('USER','EMPLOYEE')"><a class="waves-effect waves-cyan "
+				th:href="@{'/job/'+${userModel.id}}"><i class="material-icons">check</i><span
+					class="menu-title" data-i18n="">My Jobs</span></a></li>
+			
+			
+			<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllPosts} ? 'active' : '' " th:href="@{/admin/allPosts}"
+							data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>User Posts</span></a>
+
+						</li>
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllBlogs} ? 'active' : '' "
+							th:href="@{/admin/allBlogs}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Blogs</span></a>
+						</li>
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllForums} ? 'active' : ''"
+							th:href="@{/admin/allForums}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Forums</span></a>
+						</li>
+						
+						<li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"><a
+							class="collapsible-body"
+							th:class="${isAllJobs} ? 'active' : ''"
+							th:href="@{/admin/allJobs}" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>User Jobs</span></a>
+						</li>
+			
+					
+<th:block sec:authorize="hasAnyAuthority('USER','EMPLOYEE') or !isAuthenticated()">					
+
+			<li class="navigation-header"><a class="navigation-header-text">Personal
+			</a><i class="navigation-header-icon material-icons">more_horiz</i></li>
+
+			<li class="bold"><a
+				class="collapsible-header waves-effect waves-cyan " href="#"><i
+					class="material-icons">crop_original</i><span class="menu-title"
+					data-i18n="">Medias</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub"
+						data-collapsible="accordion">
+						<li><a class="collapsible-body"
+							href="/admin/media-gallery-page" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>My Gallery
+									</span></a></li>
+						<li><a class="collapsible-body"
+							href="/admin/media-hover-effects" data-i18n=""><i
+								class="material-icons">radio_button_unchecked</i><span>Media
+									Hover Effects</span></a></li>
+					</ul>
+				</div></li>
+			
+			<li class="bold"><a
+				class="waves-effect waves-cyan" th:href="@{'/user/profile' + ${userModel.id}}"><i
+					class="material-icons">face</i><span
+					class="menu-title" data-i18n="">User Profile</span></a>
+				</li>
+				<li class="bold"><a
+				class="waves-effect waves-cyan" href="#"><i
+					class="material-icons">filter_tilt_shift</i><span
+					class="menu-title" data-i18n="">Misc</span></a>
+				</li>
+				
+				
+			<li class="navigation-header"><a class="navigation-header-text">Friends </a><i class="navigation-header-icon material-icons">more_horiz</i>
+			</li>
+			
+			<li class="bold"><a
+				class="waves-effect waves-cyan" href="#"><i
+					class="material-icons">group</i><span
+					class="menu-title" data-i18n="">Friend List</span></a>
+				</li>
+</th:block>			
+			</ul>
+
+
+	</aside>
+</th:block>

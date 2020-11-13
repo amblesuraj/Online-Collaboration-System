@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    layout:decorate="~{layout/UserLayout}">
+
+<head>
+
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/style.css" th:href="@{/app-assets/style.css}" />
+
+</head>
+
+<body>
+
+    <th:block layout:fragment="content">
+
+        <main>
+            MAIN CONTENT
+        </main>
+    </th:block>
+    <!-- 
+        add particular javascript files files to layout:fragment  
+    -->
+    <th:block layout:fragment="script">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </th:block>
+
+</body>
+
+</html>
